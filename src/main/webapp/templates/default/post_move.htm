@@ -1,0 +1,52 @@
+<#include "header.htm"/>
+
+<script type="text/JavaScript" src="${JForumContext.encodeURL("/js/list/moderation")}"></script>
+
+<div id="nav">
+	<a class="nav" href="${contextPath}/forums/list${extension}">${I18n.getMessage("ForumListing.forumIndex")}</a>
+</div>
+<form action="${contextPath}/jforum${extension}" method="post" name="formModeration" id="formModeration" onsubmit="return askModerationReason();" accept-charset="${encoding}">
+	<input type="hidden" name="action" value="moveTopic" />
+	<input type="hidden" name="module" value="${moduleName}" />
+	<input type="hidden" name="returnUrl" value="${returnUrl?if_exists}" />
+	<input type="hidden" name="topics" value="${topics}" />
+	<input type="hidden" name="forum_id" value="${forum_id}" />
+	<input type="hidden" name="log_type" value="0">
+	<input type="hidden" name="log_description">
+	<DIV class="mainbox viewtopic">
+		<h1>${I18n.getMessage("PostForm.movingTopic")}</h1>
+		<table class="mainbox" width="100%" cellspacing="1" cellpadding="4" border="0">					
+			<tr>
+				<td class="row1">
+					<table width="100%" cellspacing="0" cellpadding="1" border="0">
+						<tr>
+							<td align="center">
+								<b>${I18n.getMessage("PostForm.moveToForum")}:</b>
+								<select name="to_forum">
+									<#list allCategories as category>
+										<optgroup label="${category.name}">
+											<#list category.getForums() as forum>
+												<option value="${forum.id}">&nbsp;&nbsp;${forum.name}</option>
+											</#list>
+										</optgroup>
+									</#list>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td align="center">
+								<input type="submit" name="submit" class="submit" value="${I18n.getMessage("move")}" />
+								&nbsp;
+								<input type="button" class="submit" value="${I18n.getMessage("previousPage")}" onclick="history.go(-1)" class="liteoption" />
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>  
+		</table>  
+	</DIV>
+</form>
+<div id="nav">
+	<a class="nav" href="${contextPath}/forums/list${extension}">${I18n.getMessage("ForumListing.forumIndex")}</a>
+</div>
+<#include "bottom.htm"/>

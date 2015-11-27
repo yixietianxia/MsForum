@@ -1,0 +1,102 @@
+<#include "header.htm"/>
+<#import "../macros/pagination.ftl" as pagination>
+
+<script type="text/javascript" src="${contextPath}/templates/${templateName}/js/pagination.js?${startupTime}"></script>
+<#assign sectionTable>
+<div id="nav">
+	<table cellspacing="0" cellpadding="2" width="100%" align="center" border="0">
+		<tr>
+			<td valign="bottom" align="left">
+				<a class="nav" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")}</a>
+				<span class="nav">&raquo;</span>
+				<a id="latest3" class="nav" href="${JForumContext.encodeURL("/moderation/showActivityLog")}">${I18n.getMessage("ModerationLog.moderationLog")}</a>
+			</td>
+		</tr>
+	</table>
+</div>
+</#assign>
+${sectionTable}
+<div class="pages_btns" valign="center">
+<@pagination.doPagination action/>
+</div>
+<div class="mainbox formbox"> 
+<h1>${I18n.getMessage("ModerationLog.moderationLog")}</h1>
+<table class="mainbox gen" cellspacing="1" cellpadding="4" width="100%" border="0">
+	<thead>
+		<tr>
+			<td width="150px">${I18n.getMessage("ModerationLog.date")}</td>
+			<#if canAccessFullModerationLog>
+				<td>${I18n.getMessage("ModerationLog.moderator")}</td>
+			</#if>
+			<td>${I18n.getMessage("ModerationLog.user")}</td>
+			<td>${I18n.getMessage("ModerationLog.type")}</th>
+			<td>${I18n.getMessage("ModerationLog.description")}</td>
+			<#if canAccessFullModerationLog>
+				<td>${I18n.getMessage("ModerationLog.originalMessage")}</td>
+			</#if>
+			<td>${I18n.getMessage("ModerationLog.action")}</td>
+		</tr>
+	</thead>
+	<#if activityLog.size() == 0>
+		<#if canAccessFullModerationLog>
+			<tr>
+				<td colspan="7">
+					<span class="gen">${I18n.getMessage("ModerationLog.moderationLogEmpty")}</span>
+				</td>
+			</tr>
+		<#else>
+			<tr>
+				<td colspan="5">
+					<span class="gen">${I18n.getMessage("ModerationLog.moderationLogEmpty")}</span>
+				</td>
+			</tr>
+		</#if>
+	</#if>
+	<#list activityLog as log>
+	<tr>
+		<td>${log.date?datetime}</td>
+
+		<#if canAccessFullModerationLog>
+			<td >
+				<a href="${JForumContext.encodeURL("/user/profile/${log.user.id}")}">${log.user.username}</a>
+			</td>
+		</#if>
+		<td>
+			<#if log.posterUser.username?exists>
+				<a href="${JForumContext.encodeURL("/user/profile/${log.posterUser.id}")}">${log.posterUser.username}</a>
+			</#if>
+		</td>
+		<td>
+			<#if log.type == 0>
+				${I18n.getMessage("ModerationLog.typeMoved")}
+			<#elseif log.type == 1>
+				${I18n.getMessage("ModerationLog.typeDeleted")}
+			<#elseif log.type == 2>
+				${I18n.getMessage("ModerationLog.typeEdited")}
+			<#else>
+				${I18n.getMessage("ModerationLog.typeLockUnlock")}
+			</#if>
+		</td>
+		<td>${log.description?html}</td>
+
+		<#if canAccessFullModerationLog>
+			<td>${log.originalMessage?default("&nbsp;")}</td>
+		</#if>
+
+		<td>
+			<#if log.topicId != 0>
+				[<a href="${JForumContext.encodeURL("/posts/list/${log.topicId}")}">${I18n.getMessage("ModerationLog.viewTopic")}</a>]
+			</#if>
+			<#if log.postId != 0>
+				[<a href="${JForumContext.encodeURL("/posts/preList/${log.topicId}/${log.postId}")}">${I18n.getMessage("ModerationLog.viewMessage")}</a>]
+			</#if>
+		</td>
+	</tr>
+	</#list>
+</table>  
+</div>
+<div class="pages_btns" valign="center">
+<@pagination.doPagination action/>
+</div>
+${sectionTable}
+<#include "bottom.htm"/>

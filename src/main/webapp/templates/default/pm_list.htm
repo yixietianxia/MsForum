@@ -1,0 +1,100 @@
+<#include "header.htm"/>
+
+<div id="nav">
+	<span class="nav">
+		<a class="nav" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")}</a>
+	</span>
+</div>
+<div id="headfilter">
+<ul class="tabs">
+		<li <#if inbox?default(false)>class="spec"</#if>>
+			<a href="${JForumContext.encodeURL("/pm/inbox")}">${I18n.getMessage("PrivateMessage.inbox")}</a>
+		</li>
+		<li <#if sentbox?default(false)>class="spec"</#if>>
+			<a href="${JForumContext.encodeURL("/pm/sentbox")}" title="${I18n.getMessage("PrivateMessage.sentbox")}">${I18n.getMessage("PrivateMessage.sentbox")}</a>
+		</li>
+		<li style="border: medium none;">
+			<a href="${JForumContext.encodeURL("/pm/send")}">${I18n.getMessage("PrivateMessage.title")}</a>
+		</li>
+	</ul>
+</div>
+<div class="mainbox topiclist">
+<h1><#if inbox?default(false)>${I18n.getMessage("PrivateMessage.inbox")}</#if><#if sentbox?default(false)>${I18n.getMessage("PrivateMessage.sentbox")}</#if></h1>
+<script type="text/javascript">
+function select_switch(status) 
+{
+	for (i = 0; i < document.privmsg_list.length; i++) {
+		document.privmsg_list.elements[i].checked = status;
+	}
+}
+</script>
+<form action="${JForumContext.encodeURL("/jforum")}" method="post" name="privmsg_list" id="privmsg_list">
+<input type="hidden" name="module" value="${moduleName}" />
+<input type="hidden" name="action" value="delete" />
+<table cellspacing="0" cellpadding="10" width="100%" align="center" border="0">
+	<tbody>
+	<thead class="category">
+		<tr>
+			<td width="5px"></td>
+			<td nwidth="5px" height="25"></td>
+			<td width="50%" align="left">
+				&nbsp;${I18n.getMessage("PrivateMessage.subject")}&nbsp;
+			</td>
+			<td width="20%">
+				<#if inbox?default(false)>
+				&nbsp;${I18n.getMessage("PrivateMessage.from")}&nbsp;
+				<#else>
+				&nbsp;${I18n.getMessage("PrivateMessage.to")}&nbsp;
+				</#if>
+			</td>
+			<td nowrap="nowrap" width="100px">
+				&nbsp;${I18n.getMessage("PrivateMessage.date")}&nbsp;
+			</td>
+		</tr>
+		</thead>
+		<#if (pmList.size() <= 0)>
+			<tr>
+			    <td class=folder></td>
+			    <td>No Messages</td>
+			    <td class=author></td>
+			    <td class=nums></td>
+			    <td class="lastpost" align="right"></td>
+		    </tr>
+		</#if>
+		<#list pmList as pm>
+		<tr>
+			<td valign="middle" align="center" width="5px"><input type="checkbox" value="${pm.id}" name="id" /></td>
+			<td class="row1" valign="middle" align="center" width="5px">
+				<#if pm.type == NEW>
+					<img src="${contextPath}/templates/${templateName}/images/msg_new.gif" alt="New Folder" />
+				<#else>
+					<img src="${contextPath}/templates/${templateName}/images/msg.gif" alt="Folder" />
+				</#if>
+			</td>
+			<td valign="middle" width="60%"><span class="topictitle">&nbsp;<a class="topictitle" href="${JForumContext.encodeURL("/pm/read/${pm.id}")}">${pm.post.subject?html}</a></span></td>
+			<td valign="middle" align="left" width="20%">
+				<#if inbox?default(false)>
+				<span class="name">&nbsp;<a class="name" href="${JForumContext.encodeURL("/user/profile/${pm.fromUser.id}")}">${pm.fromUser.username}</a></span>
+				<#else>
+				<span class="name">&nbsp;<a class="name" href="${JForumContext.encodeURL("/user/profile/${pm.toUser.id}")}">${pm.toUser.username}</a></span>
+				</#if>
+			</td>
+			<td valign="middle" align="center" width="100px"><span class="postdetails">${pm.formatedDate}</span></td>
+		</tr>
+		</#list>
+		<tr>
+			<td colspan="3"><b><span class="gensmall"><a class="gensmall" href="javascript:select_switch(true);">${I18n.getMessage("PrivateMessage.checkAll")}</a> 
+					<a href="javascript:select_switch(false);">${I18n.getMessage("PrivateMessage.uncheckAll")}</a></span></b>
+			</td>
+			<td class="catbottom" align="right" colspan="2" height="28">
+				&nbsp; <input class="submit" type="submit" value="${I18n.getMessage("PrivateMessage.deleteSelected")}" name="delete" />
+				<!--
+				&nbsp; <input class="submit" type="submit" value="${I18n.getMessage("PrivateMessage.deleteAll")}" name="deleteall" />
+				-->
+			</td>
+		</tr>
+	</tbody>
+</table>
+</form>
+</div>
+<#include "bottom.htm"/>

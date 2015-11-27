@@ -1,0 +1,148 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=${encoding}">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>${I18n.getMessage("Install.welcome")} iforums ${version} ${I18n.getMessage("Install.installation")} - ${I18n.getMessage("Install.step2")}</title>
+<link rel="stylesheet" href="${contextPath}/templates/default/styles/style.css" type="text/css">
+<style type="text/css">
+th			{ background-image: url('${contextPath}/templates/default/images/cellpic3.gif') }
+td.cat		{ background-image: url('${contextPath}/templates/default/images/cellpic1.gif') }
+td.rowpic	{ background-image: url('${contextPath}/templates/default/images/cellpic2.jpg'); background-repeat: repeat-y }
+td.cathead,td.catsides,td.catleft,td.catright,td.catbottom { background-image: url('${contextPath}/templates/default/images/cellpic1.gif') }
+</style>
+
+</head>
+<body text="#000000" link="#006699" vlink="#5584AA">
+<table cellspacing="0" cellpadding="0" width="100%" border="0">
+	<tr>
+		<td>
+			<a href="${contextPath}"><img src="${contextPath}/templates/default/images/logo.jpg"  vspace="1" border="0" alt="[Logo]" /></a>
+		</td>					 
+		<td width="100%" align="center" valign="middle">
+			<table cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td valign="top" nowrap="nowrap" align="center">&nbsp;
+					
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<DIV class="mainbox forumlist">
+	<h1 align="left">${I18n.getMessage("Install.welcome")} iforums ${version} ${I18n.getMessage("Install.installation")} - ${I18n.getMessage("Install.step2")}</h1>
+	<table width="100%" border="0" cellspacing="0" cellpadding="10" align="center"> 
+			<form action="${contextPath}/install/install${extension}" name="install" method="post">
+			<input type="hidden" name="module" value="install">
+			<input type="hidden" name="action" value="doInstall">
+			<tr>
+				<td colspan="2">
+					<span class="gen">
+							${I18n.getMessage("Install.checkInformation")}
+							<br/><font color="#ff0000"><b>${I18n.getMessage("Install.forHelpAccess")}</b></font>
+					</span>	
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><b>1) ${I18n.getMessage("Install.general")}</b></td>
+
+			</tr>
+			<tr>
+				<td class="row3 gen" align="right" width="200px"><b>${I18n.getMessage("Install.boardLanguage")}</b></td>
+				<td class="row3 gen"><i>${language}</i></td>
+			</tr>
+			<tr>
+				<td class="row1 gen" align="right"><b>${I18n.getMessage("Install.dbType")}: </b></td>
+				<td class="row1 gen"><i>${database}</i></td>
+			</tr>
+			<tr>
+				<td colspan="2"><b>2) ${I18n.getMessage("Install.dbConfiguration")}</b></td>
+			</tr>
+			
+			<#if db_connection_type?default("JDBC") == "JDBC">
+				<tr>
+					<td class="row3 gen" align="right"><b>${I18n.getMessage("Install.dbHost")}</b></td>
+					<td class="row3 gen"><i>${dbHost}<#if dbPort?exists>:${dbPort}</#if></i></td>
+				</tr>
+
+				<tr>
+					<td class="row1 gen" align="right"><span class="gen"><b>${I18n.getMessage("Install.dbName")}: </b></span></td>
+					<td class="row1 gen"><i>${dbName}</i></td>
+				</tr>
+				<tr>
+					<td class="row3 gen" align="right"><b>${I18n.getMessage("Install.dbUsername")}: </b></td>
+					<td class="row3 gen"><i>${dbUser}</i></td>
+				</tr>
+
+				<tr>
+					<td class="row1 gen" align="right"><b>${I18n.getMessage("Install.dbPassword")}: </b></td>
+					<td class="row1 gen"><i>${dbPassword}</i></td>
+				</tr>
+
+				<tr>
+					<td class="row3 gen" align="right"><b>${I18n.getMessage("Install.dbEncoding")}: </b></td>
+					<td class="row3 gen"><i>${dbEncoding}</i></td>
+				</tr>
+
+				<tr>
+					<td class="row1 gen" align="right"><b>${I18n.getMessage("Install.pool")}: </b></td>
+					<td class="row1 gen"><i>${usePool}</i></td>
+				</tr>
+			<#else>
+			<tr>
+					<td class="row3 gen" align="right"><b>${I18n.getMessage("Install.dbDataSource")}: </b></td>
+					<td class="row3 gen"><i>${dbdatasource}</i></td>
+				</tr>
+			 </#if>
+			<tr>
+				<td colspan="2"><b>3) ${I18n.getMessage("Install.boardConfiguration")}</b></td>
+			</tr>					
+			<tr>
+				<td class="row1 gen" align="right"><b>${I18n.getMessage("Install.forumLink")}: </b></td>
+				<td class="row1 gen"><i>${forumLink}</i></td>
+			</tr>
+			<tr>
+				<td class="row3 gen" align="right"><b>${I18n.getMessage("Install.siteLink")}: </b></td>
+				<td class="row3 gen"><i>${siteLink}</i></td>
+			</tr> 					 
+			<tr>
+				<td class="row1 gen" align="right"><b>${I18n.getMessage("Install.adminUser")}: </b></td>
+				<td class="row2 gen"><i>admin</i></td>
+			</tr>
+			<tr>
+				<td class="row3 gen" align="right"><b>${I18n.getMessage("Install.adminPassword")}: </b></td>
+				<td class="row3 gen"><i>${adminPassword}</i></td>
+			</tr>
+			<script language="javascript">
+			function beginInstall()
+			{
+				document.install.button_install.value = "${I18n.getMessage("Install.installing")}";
+				document.install.button_install.disabled = true;
+				document.install.button_back.disabled = true;
+
+				document.install.submit();
+			}
+			</script>
+			<tr> 
+			  	<td align="center">
+				</td>
+			  	<td align="left">
+					<input type="hidden" name="install_step" value="2" />
+					<input type="button" class="submit" value="${I18n.getMessage("Install.modifyConfiguration")}" name="button_back" onClick="history.go(-1);">
+					<input class="submit" type="submit" value="${I18n.getMessage("Install.begin")}" name="button_install" onClick="beginInstall();"/>&nbsp;&nbsp;
+				</td>
+			</tr>
+		</form>
+	</table>
+</div>
+<DIV id=footer><DIV class=wrap><DIV id=footlinks><P></P>
+
+<P><A href="mailto:zhurx4g@gmail.com">Contact us</A>&nbsp;-&nbsp;<A href="mailto:zhurx4g@gmail.com" target=_blank>iforums</A>&nbsp;-&nbsp;
+<A href="http://www.miibeian.gov.cn" target=_blank>ICP:00000000</A>&nbsp;-&nbsp;<span class="scrolltop" title="" onclick="window.scrollTo(0,0);">TOP</span>&nbsp;-&nbsp;
+</P></DIV>
+
+<P class=copyright> Powered by <STRONG><a class="copyright" href="http://code.google.com/p/iforums/" target="_blank">IForums 1.0</a> &copy; <a class="copyright" href="http://code.google.com/p/iforums/" target="_blank">IForums Team</a></span></STRONG> <EM>3.0</EM> &copy; 2010 <A
+ href="http://code.google.com/p/iforums/" target=_blank>iforums</A>  <#if session?exists && session.isAdmin()><span class="gen"><a id="adminpanel" target="_blank" href='${JForumContext.encodeURL("/admBase/login")}'>${I18n.getMessage("ForumBase.admin")}</a></span></#if></P></DIV></DIV><script src="${contextPath}/templates/default/js/ts_exchange.js" type="text/javascript"></script>
+
+</body>
+</html>

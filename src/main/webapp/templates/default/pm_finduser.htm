@@ -1,0 +1,56 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>${I18n.getMessage("PrivateMessage.findUser")}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=${encoding}" />
+<style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/style.css );</style>
+</head>
+
+<body>
+
+<script type="text/javascript">
+<!--
+function refreshUsername()
+{
+	var u = document.search.selectedUsername;
+
+	opener.document.forms['post'].toUserId.value = u.value
+	opener.document.forms['post'].toUsername.value = u[u.selectedIndex].text;
+
+	opener.focus();
+	window.close();
+}
+-->
+</script>
+<DIV class="mainbox viewtopic">
+	<H1 align="left">${I18n.getMessage("PrivateMessage.findingUser")}</H1>
+	<form action="${contextPath}/jforum${extension}" method="post" name="search" id="search" accept-charset="${encoding}">
+		<input type="hidden" name="action" value="${action}" />
+		<input type="hidden" name="module" value="${moduleName}" />
+		<table class="mainbox" cellspacing="1" cellpadding="4" width="100%" border="0">
+			<tr>
+				<td class="row1" valign="top">
+					<span class="genmed"><br />
+					<span class="gensmall">${I18n.getMessage("PrivateMessage.searchTip")}</span><br />
+					<input type="text" class="post" name="username" value="${username?default("")}"/>&nbsp; 
+					<input class="submit" type="submit" value="${I18n.getMessage("ForumBase.search")}" name="search" />
+					</span><br />
+					<br />
+					<#if showResult>
+						<select name="selectedUsername">
+							<#list namesList as user>
+								<option value="${user.id}">${user.username}</option>
+							</#list>
+						</select>
+						&nbsp;<input type="button" class="submit" value="${I18n.getMessage("PrivateMessage.select")}" class="liteoption" onclick="refreshUsername();" />
+					</#if>
+					<center><span class="genmed"><a class="genmed" href="javascript:window.close();">${I18n.getMessage("closeWindow")}</a></span></center>
+				</td>
+			</tr>
+		</table>
+	</form>
+</DIV>
+</body>
+</html>

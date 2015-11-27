@@ -1,0 +1,52 @@
+<#include "header.htm"/>
+<form action="${JForumContext.encodeURL("/jforum")}" method="post" name="loginform" id="loginform" accept-charset="${encoding}">
+  <input type="hidden" name="module" value="user" />
+  <input type="hidden" name="action" value="validateLogin" />
+  
+  <#if returnPath?exists>
+  	<input type="hidden" name="returnPath" value="${returnPath?html}" />
+  </#if>
+  
+<div id="nav">
+	<a class="nav" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")}</a>
+</div>
+<div class="mainbox formbox"><span class="headactions">
+	<a class="notabs" href="/forum/help/member.jsp" target="_blank"></a></span> 
+	<h1>${I18n.getMessage("Login.enterUsername")}</h1>
+	<table class="mainbox" cellspacing="1" cellpadding="4" width="100%" align="center" border="0">
+		<#if invalidLogin?exists>
+			<tr>
+				<td></td>
+				<td align="left">
+						<font color="red">${I18n.getMessage("Login.invalidLogin")}</font>
+				</td>
+			</tr>
+		</#if>
+		<tr>
+		    <td width="15%"><label for="userID">${I18n.getMessage("Login.user")}:</label></td>
+		    <td>
+			    <input class="post" tabindex="1" maxlength="40" size="25" name="username" type="text"/>
+			    <a href="${JForumContext.encodeURL("/user/activateManual")}">${I18n.getMessage("ActivateAccount.activate")}</a>
+		    </td>
+	    </tr>
+	
+		<tr>
+			<td><label for="pwd1">${I18n.getMessage("Login.password")}:</label></td>
+			<td><input class="post" tabindex="2" type="password" maxlength="25" size="25" name="password" />
+			<a href="${JForumContext.encodeURL("/user/lostPassword")}">${I18n.getMessage("Login.lostPassword")}</a>
+			</td>
+		</tr>
+		<tr align="center">
+			<td/>
+			<td align="left">
+				<input type="hidden" name="redirect" />
+				<button class="submit" tabindex="100" name="loginsubmit" type="submit" value="true" onclick="javascript:parent.frames['leftmenu'].location.reload();">${I18n.getMessage("Login.enter")}</button>
+				<#if autoLoginEnabled>
+					<input type="checkbox" id="autologin" name="autologin" /><label for="autologin">${I18n.getMessage("Login.autoLogon")}</label>
+				</#if>
+			</td>
+		</tr>
+	</table>
+	</form>
+</div>
+<#include "bottom.htm"/>

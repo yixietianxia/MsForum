@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>${pageTitle?default("iforums")?html}</title>
+		<link rel="shortcut" icon="" href="favicon.ico">
+		<link rel="bookmark" href="favicon.ico">
+		<link rel="icon" type="image/gif" href="favicon.ico">
+		<meta name="keywords" content="board,iforums,bbs,forum">
+		<meta name="description" content="">
+		<meta name="generator" content="iforums">
+		<meta name="author" content="iforums Team &amp; iforums Team">
+		<meta name="copyright" content="2010.">
+		<meta name="MSSmartTagsPreventParsing" content="TRUE">
+		<meta http-equiv="MSThemeCompatible" content="Yes">
+		<style type="text/css">
+			body {
+				margin: 0px;
+			}
+			#frameswitch {
+				background: url(templates/frame/images/frame_switch.gif) no-repeat 0;
+				cursor: pointer;
+			}
+		</style>
+		<script src="${contextPath}/templates/frame/js/common.js" type="text/javascript"></script>
+		<script src="${contextPath}/templates/frame/js/iframe.js" type="text/javascript"></script>
+		<script type="text/javascript">function framebutton(){
+			var obj = document.getElementById('navigation');
+			var frameswitch = document.getElementById('frameswitch');
+			var switchbar = document.getElementById('switchbar');
+			if(obj.style.display == 'none'){
+			obj.style.display = '';
+			switchbar.style.left = '177px';
+			frameswitch.style.backgroundPosition = '0';
+			}else{
+			obj.style.display = 'none';
+			switchbar.style.left = '0px';
+			frameswitch.style.backgroundPosition = '-11';
+			}
+			}
+			
+			if(top != self) {
+			top.location = self.location;
+			}
+		</script>
+</head>
+<body scroll="no">
+	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+		<tbody>
+			<tr>
+				<td style="" id="navigation" name="frametitle" align="middle" valign="center" width="180">
+					<iframe name="leftmenu" src="${contextPath}/fourms/jforum.html?module=frame&action=leftMenu" style="height: 100%; visibility: inherit; width: 180px; z-index: 1;" onkeydown="refreshrightframe(event)" scrolling="auto" frameborder="0"></iframe>
+				</td>
+				<td style="width: 100%;">
+					<table id="switchbar" style="position: absolute; left: 177px; background-repeat: repeat-y; background-position: -177px 50%;" border="0" cellpadding="0" cellspacing="0" height="100%" width="11">
+						<tbody>
+							<tr>
+								<td onclick="framebutton()">
+									<img style="background-position: 0pt 50%;" id="frameswitch" src="${contextPath}/templates/frame/images/none.gif" alt="" border="0" height="49" width="11">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<iframe name="main" src="${contextPath}/forums/list.html" style="height: 100%;visibility: inherit; width: 100%; z-index: 1; overflow: visible;" onkeydown="refreshrightframe(event)" scrolling="yes" frameborder="0"></iframe>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

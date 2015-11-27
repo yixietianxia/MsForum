@@ -1,0 +1,33 @@
+<DIV class=postactions>
+  	 <P align="right">
+  	 	<table>
+	  	 	<tr>
+		  	 	<td align="left">
+			     <#if karmaEnabled>
+					<script type="text/javascript">writeStars(${post.karma.karmaPoints}, ${post.id});</script>&nbsp;&nbsp;
+				 </#if>
+				 <#if karmaEnabled && post.userId != session.userId && logged>
+						<#if !karmaVotes.containsKey(post.id)>
+							<script type="text/javascript">karmaPointsCombo(${post.id})</script>&nbsp;&nbsp;
+						<#else>
+							<span class="gensmall">${I18n.getMessage("Karma.yourRate")}: ${karmaVotes.get(post.id)}</span>&nbsp;&nbsp;
+						</#if>
+				</#if>
+		  	 	</td>
+		  	 	<td align="right">
+		  	 		<#if (logged || anonymousPosts) && topic.status != STATUS_LOCKED && !readonly>
+						<a href="javascript:activateQuickReply('${post_index}')">${I18n.getMessage("PostForm.quickReply")}</a>
+					</#if>
+				     <#if topic.status != STATUS_LOCKED && !readonly>
+						<a href="${JForumContext.encodeURL("/posts/quote/${start}/${post.id}")}" rel="nofollow" class="icon_quote">${I18n.getMessage("PostShow.refer")}</a>&nbsp;&nbsp;  
+					</#if>
+				     <#if (canEditCurrentMessage)>
+						<a href="${JForumContext.encodeURL("/jforum${extension}?module=${moduleName}&amp;action=edit&amp;post_id=${post.id}&amp;start=${start}","")}" rel="nofollow" class="icon_edit">${I18n.getMessage("PostShow.edit")}</a>&nbsp;&nbsp;  
+					</#if>
+					
+			     	<SPAN title="top" class="scrolltop" onclick="scroll(0,0)">TOP</SPAN>
+		     	</td>
+		     </tr>
+	     </table>
+     </P>
+</DIV>

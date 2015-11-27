@@ -1,0 +1,45 @@
+	<b><A href="${JForumContext.encodeURL("/user/profile/${user.id}")}" target=_blank>${I18n.getMessage("PostShow.author")}:${user.username?html}</A></b>
+	<#if post.userId != 1>
+		<P><EM>${rank.getRankTitle(user.rankId, user.totalPosts)}</EM>&nbsp;
+	<#else>
+		<P><EM>${rank.getRankTitle(user.rankId, user.totalPosts)}</EM>&nbsp;
+	</#if>
+	<#if (user.avatar?exists && user.avatar?length > 0)>
+		<#if user.isExternalAvatar() || user.avatar.startsWith("http://")>
+			<#if avatarAllowExternalUrl>
+				<img src="${user.avatar?html}" border="0" alt="[Avatar]" />
+			</#if>
+		<#else>
+			<img src="${contextPath}/images/avatar/${user.avatar}" border="0" alt="[Avatar]" />
+		</#if>
+	<#else>
+			<img src="${contextPath}/images/avatar/avatar.jpg" border="0" alt="[Avatar]" />
+	</#if>
+	<#if karmaEnabled && post.userId != 1>
+		<br/><script type="text/javascript">writeStars(${user.karma.karmaPoints}, "${user.id}${post.id}");</script>
+	</#if>
+	<#if post.userId != 1>
+		<DL class="profile">
+			<DT>${I18n.getMessage("PostShow.userTotalMessages")}:</DT><DD>${user.totalPosts}</DD>
+			<#if (user.from?exists && user.from?length > 0)>
+				<DT>${I18n.getMessage("PostShow.userFrom")}:</DT><DD>${user.from?html}</DD>
+			</#if>
+			<#if post.userId != 1>
+				<#if user.isOnline()>
+					<DT>${I18n.getMessage("UserProfile.status")}:</DT><DD><span class="online">${I18n.getMessage("PostShow.userOnline")}</span></DD>
+				<#else>
+					<DT>${I18n.getMessage("UserProfile.status")}:</DT><DD><span class="offline">${I18n.getMessage("PostShow.userOffline")} </span></DD>
+				</#if>
+				<DT>${I18n.getMessage("PostShow.userRegistrationDate")}:</DT><DD>${user.registrationDate}</DD>
+			</#if>
+		</DL>
+	<#else>
+		<DL class="profile">
+			<DT>${I18n.getMessage("PostShow.userTotalMessages")}:</DT><DD>${user.totalPosts}</DD>
+			<#if (user.from?exists && user.from?length > 0)>
+				<DT>${I18n.getMessage("PostShow.userFrom")}:</DT><DD>${user.from?html}</DD>
+			</#if>
+			<DT>${I18n.getMessage("UserProfile.status")}:</DT><DD><span class="online">${I18n.getMessage("PostShow.userOnline")}</span></DD>
+			<DT>${I18n.getMessage("PostShow.userRegistrationDate")}:</DT><br/><DD></DD>
+		</DL>
+	</#if>

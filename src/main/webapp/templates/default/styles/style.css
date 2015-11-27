@@ -1,0 +1,902 @@
+BODY {
+	FONT: 12px/1.6em Helvetica, Arial, sans-serif; COLOR: #000; BACKGROUND: #fff; TEXT-ALIGN: center; PADDING: 0px; MARGIN: 10px;
+}
+TABLE {
+	BORDER-COLLAPSE: collapse; empty-cells: show
+}
+TH {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+TD {
+	FONT: 12px/1.6em Helvetica, Arial, sans-serif; COLOR: #000
+}
+UL {
+	PADDING: 0px; MARGIN: 0px
+}
+DL {
+	PADDING: 0px; MARGIN: 0px
+}
+DD {
+	PADDING: 0px; MARGIN: 0px
+}
+P {
+	PADDING: 0px; MARGIN: 0px
+}
+H1 {
+	PADDING: 0px; MARGIN: 0px; FONT-SIZE: 1em
+}
+H2 {
+	PADDING: 0px; MARGIN: 0px; FONT-SIZE: 1em
+}
+H3 {
+	PADDING: 0px; MARGIN: 0px; FONT-SIZE: 1em
+}
+H4 {
+	PADDING: 0px; MARGIN: 0px; FONT-SIZE: 1em
+}
+H5 {
+	PADDING: 0px; MARGIN: 0px; FONT-SIZE: 1em
+}
+FORM {
+	PADDING: 0px; MARGIN: 0px; FONT-SIZE: 1em
+}
+INPUT {
+	FONT: 12px Helvetica, Arial, sans-serif; COLOR: #000; BORDER-WIDTH: 1px; PADDING: 2px; padding-bottom:3px; BORDER-COLOR: #ddd;BACKGROUND: #fff
+}
+INPUT.search {
+	PADDING-TOP: 2px; PADDING-BOTTOM: 0px; height:18px;
+}
+TEXTAREA {
+	FONT: 12px Helvetica, Arial, sans-serif; COLOR: #000; BORDER-WIDTH: 1px; PADDING: 2px; BORDER-COLOR: #ddd; BACKGROUND: #fff
+}
+SELECT {
+	FONT: 12px Verdana, Arial, Helvetica, sans-serif; COLOR: #000; BACKGROUND: #fff
+}
+BUTTON {
+	FONT: 12px Helvetica, Arial, sans-serif; COLOR: #000; BORDER-RIGHT: #999 1px solid; BORDER-TOP: #e8e8e8 1px solid; BACKGROUND: #f5f5f5; BORDER-LEFT: #e8e8e8 1px solid; CURSOR: pointer; BORDER-BOTTOM: #999 1px solid; height:22px; line-height: 20px; vertical-align:bottom; padding-bottom:1px; padding-left:4px; padding-right:4px
+}
+BUTTON.submit {
+	BORDER-RIGHT: #fdb939 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #fffdee 1px solid; PADDING-LEFT: 10px; BACKGROUND: #fff8c5; PADDING-BOTTOM: 0px; BORDER-LEFT: #fffdee 1px solid; COLOR: #090; MARGIN-RIGHT: 1em; PADDING-TOP: 0px; BORDER-BOTTOM: #fdb939 1px solid
+}
+input.submit {
+	BORDER-RIGHT: #fdb939 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #fffdee 1px solid; PADDING-LEFT: 10px; BACKGROUND: #fff8c5; PADDING-BOTTOM: 0px; BORDER-LEFT: #fffdee 1px solid; COLOR: #090; MARGIN-RIGHT: 1em; PADDING-TOP: 0px; BORDER-BOTTOM: #fdb939 1px solid
+}
+A {
+	COLOR: #000; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A IMG {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+EM {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+CITE {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+SPAN {
+	COLOR: #000
+}
+SPAN.warning {
+	BACKGROUND: url(../images/check_error.gif) no-repeat 2px 0px; padding-left:15px
+}
+SPAN.passed {
+	BACKGROUND: url(../images/check_right.gif) no-repeat 2px 0px; padding-left:15px
+}
+* {
+	WORD-WRAP: break-word
+}
+.wrap {
+	MARGIN: auto; WIDTH: 98%; TEXT-ALIGN: left
+}
+.notice LI {
+	LIST-STYLE-TYPE: none
+}
+.notice {
+	FONT-SIZE: 14px; PADDING-BOTTOM: 0.2em; COLOR: #090; PADDING-TOP: 0.5em; border-bottom: #090 1px dashed
+}
+.remark {
+	FONT-SIZE: 14px; PADDING-BOTTOM: 0.2em; COLOR: #090; PADDING-TOP: 0.5em
+}
+.message {
+	MARGIN: 3em 10em 5em
+}
+.message H1 {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 1em; BACKGROUND: url(../images/box_bg.gif) #fff repeat-x 0px 0px; MARGIN-BOTTOM: 1em; BORDER-LEFT: #fff 1px solid; LINE-HEIGHT: 26px; BORDER-BOTTOM: #ddd 1px solid
+}
+.message P {
+	MARGIN: 1.5em 1em
+}
+.message A {
+	COLOR: #069
+}
+#header {
+	OVERFLOW: hidden; WIDTH: 100%;
+}
+#header H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 10px; PADDING-TOP: 10px;
+}
+#footer {
+	PADDING-RIGHT: 0px; BORDER-TOP: #ddd 1px solid; PADDING-LEFT: 0px; BACKGROUND: #f5f5f5; COLOR: #666; PADDING-TOP: 12px;  PADDING-BOTTOM: 10px; height: 35px
+}
+#footlinks {
+	MARGIN-TOP: -3px; FLOAT: right; TEXT-ALIGN: right
+}
+#footer IMG {
+	FLOAT: left; MARGIN: 0px 10px 0px 0px
+}
+.copyright {
+	FONT: 0.83em/1.5em Verdana, Arial, Helvetica, sans-serif
+}
+.copyright STRONG A {
+	COLOR: #0954a6
+}
+.copyright EM {
+	FONT-WEIGHT: bold; color: #ff9d25
+}
+#footnote {
+	FONT: 12px Verdana, Arial, Helvetica, sans-serif; margin-top:2px
+}
+#headermenu {
+	BORDER: #ddd 1px solid; BACKGROUND: url(../images/menu_bg.gif) #fff repeat-x; HEIGHT: 31px
+}
+#headermenu UL {
+	BORDER-RIGHT: #fff 1px solid; PADDING-RIGHT: 10px; PADDING-LEFT: 10px; /*FLOAT: right;*/ PADDING-BOTTOM: 0px; PADDING-TOP: 4px
+}
+#headermenu LI {
+	LIST-STYLE-TYPE: none; float: left
+}
+#headermenu LI A {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 9px; BACKGROUND: url(../images/menu_line.gif) no-repeat 0px 6px; FLOAT: left; PADDING-BOTTOM: 3px; COLOR: #333; PADDING-TOP: 3px; TEXT-DECORATION: none;     font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+}
+#headermenu LI.hover {
+	BORDER-RIGHT: #ddd 1px solid; BORDER-TOP: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; BORDER-BOTTOM: #fff 1px solid; BACKGROUND-COLOR: #fff
+}
+#headermenu LI.hover A {
+	PADDING-RIGHT: 7px; PADDING-LEFT: 8px; BACKGROUND-IMAGE: none; PADDING-BOTTOM: 4px; PADDING-TOP: 2px
+}
+#headermenu CITE A {
+	FONT-WEIGHT: bold; background: no-repeat 0px 6px
+}
+#headsearch {
+	PADDING-RIGHT: 2px; FLOAT: right; TEXT-ALIGN: right
+}
+#foruminfo {
+	MARGIN-TOP: 10px; MARGIN-BOTTOM: 8px; MARGIN-LEFT: 0px; MARGIN-RIGHT: 0px; OVERFLOW: hidden; WIDTH: 100%; COLOR: #666
+}
+#foruminfo P {
+	MARGIN: 0px
+}
+#foruminfo #nav {
+	PADDING-LEFT: 5px; FLOAT: left; margin: 0px
+}
+#foruminfo A {
+	COLOR: #069
+}
+#foruminfo EM {
+	COLOR: #000
+}
+#foruminfo CITE {
+	FONT-WEIGHT: bold
+}
+#foruminfo STRONG A {
+	COLOR: #000
+}
+#nav {
+	MARGIN: 10px 5px
+}
+#nav A {
+	FONT-WEIGHT: bold; COLOR: #069
+}
+.helpbox {
+	BACKGROUND: #ddd; MARGIN-BOTTOM: 10px; WIDTH: 100%
+}
+.helpbox LI {
+	LIST-STYLE-TYPE: none
+}
+.helpbox TD {
+	PADDING: 10px; BACKGROUND: url(../images/box_bg.gif) #fff repeat-x 0px 0px; VERTICAL-ALIGN: top; border: #ddd 1px solid
+}
+.helpbox H1 {
+	FONT-SIZE: 15px; MARGIN: 0px 0px 5px; WHITE-SPACE: nowrap
+}
+.helpbox H3 {
+	FONT-SIZE: 1em; MARGIN: 0px 0px 5px; WHITE-SPACE: nowrap
+}
+.helpbox STRONG {
+	MARGIN-TOP: 4px
+}
+.helpbox EM {
+	COLOR: #999
+}
+.helpbox EM A {
+	COLOR: #999
+}
+.helpbox CITE A {
+	COLOR: #069
+}
+.headactions {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 0px; FLOAT: right; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1em; PADDING-TOP: 10px
+}
+.headactions IMG {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; VERTICAL-ALIGN: middle; CURSOR: pointer; PADDING-TOP: 0px
+}
+.headactions A.notabs {
+	PADDING-RIGHT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; MARGIN-RIGHT: 0px; COLOR: #fff
+}
+.replybtn {
+	FLOAT: right
+}
+.postbtn {
+	FLOAT: right; MARGIN-LEFT: 10px; CURSOR: pointer
+}
+.pages_btns {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 8px; OVERFLOW: hidden; WIDTH: 100%; PADDING-TOP: 0px
+}
+.pages_btns .pages EM {
+	LINE-HEIGHT: 24px
+}
+.pages {
+	BACKGROUND: #f7f7f7; FLOAT: left; OVERFLOW: hidden; COLOR: #999; LINE-HEIGHT: 24px; HEIGHT: 24px; BORDER: #ddd 1px solid; margin-right:6px; BORDER-RIGHT: none
+}
+.pages A {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; FLOAT: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; PADDING-TOP: 0px; BORDER-RIGHT: #ddd 1px solid
+}
+.pages A:hover {
+	BACKGROUND-COLOR: #fff
+}
+.pages A.prev {
+	LINE-HEIGHT: 24px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; PADDING-RIGHT: 10px; PADDING-LEFT: 10px
+}
+.pages A.next {
+	LINE-HEIGHT: 24px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BORDER-RIGHT: #ddd 1px solid
+}
+.pages STRONG {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; FLOAT: left; LINE-HEIGHT: 24px; BACKGROUND: #e0e0e0; BORDER-RIGHT: #ddd 1px solid; COLOR: #090
+}
+.pages EM {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; FLOAT: left; LINE-HEIGHT: 24px; BORDER-RIGHT: #ddd 1px solid
+}
+.tabs {
+	BORDER-TOP: #fff 1px solid; BACKGROUND: #f5f5f5; MARGIN-BOTTOM: 12px; PADDING-BOTTOM: 26px; BORDER-BOTTOM: #ddd 1px solid
+}
+.tabs LI {
+	LIST-STYLE-TYPE: none; BORDER-RIGHT: #ddd 1px solid; FLOAT: left; LINE-HEIGHT: 26px
+}
+.tabs LI.current {
+	FONT-WEIGHT: bold; BACKGROUND: #fff; HEIGHT: 27px
+}
+.tabs LI.spec {
+	FONT-WEIGHT: bold; BACKGROUND: #fff; HEIGHT: 26px
+}
+.tabs LI A {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.tabs LI IMG {
+	margin-top:5px; margin-bottom:5px; margin-left:1px
+}
+.headertabs {
+	BACKGROUND: #fff; MARGIN-BOTTOM: 0px
+}
+.headertabs LI.current {
+	BACKGROUND-COLOR: #f5f5f5
+}
+#headfilter {
+	BORDER-RIGHT: #ddd 1px solid; BORDER-TOP: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; BORDER-BOTTOM: #ddd 0px solid
+}
+#headfilter .tabs {
+	MARGIN-BOTTOM: 0px; BORDER-BOTTOM-COLOR: #fff
+}
+#footfilter {
+	LINE-HEIGHT: 24px; HEIGHT: 24px; FONT-FAMILY: Simsun, "Times New Roman"
+}
+#footfilter DIV {
+	FLOAT: left; height:24px; padding-top:0px! important; padding-top:2px
+}
+#footfilter .jump_sort {
+	FLOAT: right; height:24px; padding-top:0px! important; padding-top:2px
+}
+#footfilter * {
+	VERTICAL-ALIGN: middle
+}
+.additem A {
+	 COLOR: #090
+}
+.legend {
+	BORDER: #e8e8e8 1px solid; PADDING-RIGHT: 8px; PADDING-LEFT: 8px; BACKGROUND: #f7f7f7; PADDING-BOTTOM: 8px; MARGIN: 8px auto; PADDING-TOP: 8px; TEXT-ALIGN: center; MARGIN-BOTTOM: 10px
+}
+.legend LABEL {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px
+}
+.legend IMG {
+	MARGIN-RIGHT: 10px;
+}
+.avatarlist {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; OVERFLOW: hidden; PADDING-TOP: 5px
+}
+.avatarlist DL {
+	BORDER: #e8e8e8 1px solid; PADDING: 5px; FLOAT: left; WIDTH: 70px; MARGIN-RIGHT: 5px; TEXT-ALIGN: center
+}
+.avatarlist DT {
+	WIDTH: 70px; HEIGHT: 70px
+}
+.avatarlist DL IMG {
+	WIDTH: 64px; HEIGHT: 64px
+}
+.avatarlist DD {
+	OVERFLOW: hidden; LINE-HEIGHT: 22px; HEIGHT: 22px
+}
+.forumlinks {
+	TABLE-LAYOUT: fixed
+}
+.forumlinks TD {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 55px; PADDING-BOTTOM: 5px; COLOR: #777; PADDING-TOP: 5px; BACKGROUND: url(images/union.gif) no-repeat 18px 50%;
+}
+.forumlinks TH {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 15px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; border-top: #e8e8e8 1px solid
+}
+.forumlinks TH LI{
+	list-style-type:disc
+}
+#online H4 {
+	FONT-WEIGHT: normal; COLOR: #666
+}
+#online H4 STRONG {
+	COLOR: #000
+}
+#online H4 EM{
+	font-size:12px
+}
+.absmiddle {
+	VERTICAL-ALIGN: middle
+}
+.mainbox {
+	BORDER: #ddd 1px solid; PADDING: 1px; BACKGROUND: #fff; MARGIN-BOTTOM: 10px
+}
+.mainbox H1 {
+	PADDING-LEFT: 1em; BACKGROUND: url(../images/header_bg.gif) repeat-x 0px 0px; COLOR: #fff; LINE-HEIGHT: 30px
+}
+.mainbox H3 {
+	PADDING-LEFT: 1em; BACKGROUND: url(../images/header_bg.gif) repeat-x 0px 0px; COLOR: #fff; LINE-HEIGHT: 29px; padding-bottom:1px
+}
+.mainbox H1 A {
+	COLOR: #fff
+}
+.mainbox H3 A {
+	COLOR: #fff; height:27px; margin-top: 1px; margin-bottom:1px
+}
+.mainbox TABLE {
+	WIDTH: 100%
+}
+.mainbox THEAD TH {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; BACKGROUND: #f5f5f5; PADDING-BOTTOM: 2px; COLOR: #666; LINE-HEIGHT: 22px; PADDING-TOP: 2px
+}
+.mainbox THEAD TD {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; BACKGROUND: #f5f5f5; PADDING-BOTTOM: 2px; COLOR: #666; LINE-HEIGHT: 22px; PADDING-TOP: 2px
+}
+.mainbox THEAD.category TH {
+	BACKGROUND: url(../images/cat_bg.gif) #f5f5f5; padding-bottom:0px
+}
+.mainbox THEAD.category TD {
+	BACKGROUND: url(../images/cat_bg.gif) #f5f5f5; padding-bottom:0px
+}
+.mainbox THEAD.separation TD {
+	BORDER-TOP: #ddd 1px solid; padding-bottom:1px
+}
+.mainbox TBODY TH {
+	PADDING: 5px; BORDER-TOP: #ddd 1px solid
+}
+.mainbox TBODY TD {
+	PADDING: 5px; BORDER-TOP: #ddd 1px solid
+}
+.mainbox TBODY CITE {
+	LINE-HEIGHT: 1.3em
+}
+.mainbox TBODY EM {
+	LINE-HEIGHT: 1.3em
+}
+.mainbox TBODY.info TD {
+	color:#000; border: none; padding-left:36px; padding-bottom:6px
+}
+.mainbox TBODY.info TD.subject {
+	BACKGROUND: url(../images/box_bg.gif) #f5f5f5; color:#090; padding-left:10px; padding-top:6px; padding-bottom:0px
+}
+.forumlist TABLE {
+	BORDER-COLLAPSE: separate
+}
+.forumlist TBODY STRONG {
+	COLOR: #090
+}
+.forumlist TBODY TH {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 1px; COLOR: #666; PADDING-TOP: 1px; BACKGROUND-COLOR: #fff; height: 40px; BACKGROUND-POSITION: 13px 50%; BACKGROUND-IMAGE: url(images/forum.gif); BACKGROUND-REPEAT: no-repeat
+}
+.forumlist TBODY TD {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 1px; COLOR: #666; PADDING-TOP: 1px; BACKGROUND-COLOR: #fff
+}
+.forumlist TH {
+	TEXT-ALIGN: left; PADDING-LEFT: 55px! important
+}
+.forumlist H2 EM {
+	COLOR: #069
+}
+.forumlist TBODY TH.new {
+	BACKGROUND-IMAGE: url(../images/forum_new.gif)
+}
+.forumlist CITE {
+	DISPLAY: block
+}
+.forumlist CITE A {
+	COLOR: #666
+}
+.forumlist TD.lastpost {
+	WIDTH: 260px
+}
+.management {
+	PADDING: 5px; BORDER-TOP: #ddd 1px solid; BACKGROUND: #f5f5f5
+}
+.management * {
+	VERTICAL-ALIGN: middle
+}
+.management LABEL {
+	CURSOR: pointer; MARGIN-RIGHT: 1em
+}
+.management BUTTON {
+	BORDER: #ddd 1px solid; PADDING-RIGHT: 5px; DISPLAY: inline; PADDING-LEFT: 5px; BACKGROUND: #fff; PADDING-BOTTOM: 2px; MARGIN-LEFT: 2px; OVERFLOW: visible; WIDTH: 0px; CURSOR: pointer; COLOR: #069; LINE-HEIGHT: 1em; PADDING-TOP: 3px; width: auto; font-family: "����"
+}
+.moderators A {
+	COLOR: #666
+}
+.topiclist TABLE {
+	BORDER-COLLAPSE: separate
+}
+.topiclist TBODY SPAN {
+	COLOR: #090
+}
+.topiclist TD LABEL {
+	FLOAT: right
+}
+.topiclist TBODY TD {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 1px; COLOR: #666; PADDING-TOP: 1px; BACKGROUND-COLOR: #fff; HEIGHT:36px
+}
+.topiclist TD.folder {
+	WIDTH: 30px; TEXT-ALIGN: center; PADDING-RIGHT: 3px
+}
+.topiclist TD.author {
+	WIDTH: 120px; padding-top:1px
+}
+.topiclist TD.author EM {
+	FONT-SIZE: 0.83em
+}
+.topiclist TD EM {
+	line-height:13px;
+}
+.topiclist TD CITE {
+	line-height:15px; padding-top:1px; padding-bottom:1px
+}
+.topiclist CITE {
+	DISPLAY: block
+}
+.topiclist TD.lastpost {
+	PADDING-RIGHT: 15px; WIDTH: 120px; TEXT-ALIGN: right; line-height:16px
+}
+.topiclist TD.lastpost CITE A {
+	COLOR: #999;
+}
+.topiclist TD.lastpost EM {
+	FONT-SIZE: 0.83em; color:#000
+}
+.topiclist .management {
+	PADDING-LEFT: 45px
+}
+TD LABEL.reward {
+	FLOAT: none; BACKGROUND: url(../images/reward.gif) no-repeat 4px 45%; padding-left:20px; padding-top:2px; padding-bottom:2px
+}
+TD LABEL.attach {
+	FLOAT: none; BACKGROUND: url(../images/attach.gif) no-repeat 0px 40%; padding-left:15px; padding-top:2px
+}
+TD LABEL.pic {
+	FLOAT: none; padding-left:0px; padding-top:2px; color:#090
+}
+LABEL.highlight {
+	WIDTH: 40px; MARGIN-RIGHT: 25px; FLOAT: left; padding-top:2px
+}
+LABEL.highlight INPUT {
+	FLOAT: left
+}
+LABEL.highlight EM {
+	FLOAT: right; WIDTH: 16px; HEIGHT: 16px; padding-top:2px
+}
+.viewtopic {
+	PADDING-BOTTOM: 1px
+}
+.viewtopic TABLE {
+	TABLE-LAYOUT: fixed
+}
+.viewtopic TD.postdetail {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; BACKGROUND: #fff; PADDING-BOTTOM: 0px; VERTICAL-ALIGN: top; OVERFLOW: hidden; BORDER-STYLE: none; PADDING-TOP: 0px
+}
+.viewtopic TD.postfooter {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; BACKGROUND: #fff; PADDING-BOTTOM: 0px; VERTICAL-ALIGN: bottom; OVERFLOW: hidden; BORDER-STYLE: none; PADDING-TOP: 0px
+}
+.viewtopic TD.postsign {
+	vertical-align:bottom; border:0px; padding-left:10px; padding-bottom:0px; padding-top:0px
+}
+.viewtopic TD.postauthor {
+	PADDING: 5px; BACKGROUND: #f5f5f5; OVERFLOW: hidden; WIDTH: 180px; BORDER-STYLE: none; vertical-align:top
+}
+.postinfo {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; OVERFLOW: hidden; COLOR: #666; LINE-HEIGHT: 26px; PADDING-TOP: 0px; BORDER-BOTTOM: #ddd 1px solid; HEIGHT: 26px
+}
+.postinfo STRONG {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FLOAT: right; PADDING-BOTTOM: 0px; CURSOR: pointer; COLOR: #090; LINE-HEIGHT: 26px! important; PADDING-TOP: 0px; MARGIN-LEFT: 5px
+}
+* HTML .postinfo STRONG {
+	MARGIN-TOP: -2px
+}
+.postinfo STRONG SUP {
+	FONT-WEIGHT: normal; MARGIN-LEFT: 1px; COLOR: #999
+}
+.postcontent {
+	PADDING: 10px; OVERFLOW-X: hidden; MIN-HEIGHT: 100px! important; HEIGHT: auto! important
+}
+.postcontent * {
+	LINE-HEIGHT: normal
+}
+.postcontent H2 {
+	FONT-SIZE: 1.17em; MARGIN-BOTTOM: 0.5em
+}
+.postcontent .box {
+	BORDER: 0px; MARGIN: 5px 0px
+}
+.postcontent .box TBODY TH {
+	BORDER-TOP-COLOR: #e8e8e8
+}
+.postcontent .box TBODY TD {
+	BORDER-TOP-COLOR: #e8e8e8
+}
+.smsmessage * {
+	LINE-HEIGHT: normal; height:22px
+}
+.contentmsg {
+	FONT-SIZE: 14px; LINE-HEIGHT: 1.6em
+}
+.contentmsg TD {
+	FONT-SIZE: 14px; LINE-HEIGHT: 1.6em
+}
+.contentmsg * {
+	LINE-HEIGHT: 1.4em
+}
+.contentmsg A {
+	COLOR: #069
+}
+.contentmsg LI {
+	MARGIN-LEFT: 2em
+}
+.contentmsg EM {
+	FONT-STYLE: italic
+}
+.attachlist {
+	MARGIN-TOP: 2em; FONT-SIZE: 12px; WIDTH: 500px
+}
+.attachlist P.attach {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 6px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; height:25px; PADDING-TOP: 2px; BORDER-TOP: #ccc 1px dashed; font-size:14px; COLOR: #963
+}
+.p_attachlist {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 6px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; BORDER-BOTTOM: #ccc 1px dashed
+}
+.p_attachlist DT {
+	FONT-WEIGHT: bold
+}
+.p_attachlist DT IMG {
+	MARGIN-BOTTOM: -2px
+}
+.p_attachlist EM.num {
+	COLOR: #090; font-size:12px; padding-left:1px
+}
+.p_attachlist DD {
+	PADDING-LEFT: 16px; COLOR: #666
+}
+.postactions {
+	PADDING-RIGHT: 10px; BORDER-TOP: #e8e8e8 1px solid; PADDING-LEFT: 10px; BACKGROUND: #f7f7f7; PADDING-BOTTOM: 0px; LINE-HEIGHT: 30px; PADDING-TOP: 0px; HEIGHT: 30px
+}
+.postactions INPUT {
+	FLOAT: right; MARGIN: 5px 0px 0px 5px
+}
+.postactions P {
+	FLOAT: right
+}
+.anycode {
+	BORDER: #ccc 1px dashed; FONT-SIZE: 12px; MARGIN: 10px 20px; OVERFLOW: hidden; PADDING-BOTTOM: 2px
+}
+.anycode CODE {
+	MARGIN: 0.5em 0.5em 0.5em 1.0em; LINE-HEIGHT: 1.2em; PADDING: 5px; DISPLAY: block; FONT: 14px/1.4em "Courier New", Courier, monospace
+}
+.quote {
+	BORDER: #ccc 1px dashed; FONT-SIZE: 14px; MARGIN: 10px 20px; OVERFLOW: hidden
+}
+.quote H5 {
+	PADDING-TOP: 1px; COLOR: #666; LINE-HEIGHT: 23px; BORDER-BOTTOM: #ccc 1px dashed; PADDING-LEFT: 6px
+}
+.quotefooter{
+	color:#963; font-size:14px; padding-top:3px
+}
+.quote BLOCKQUOTE {
+	MARGIN: 0.6em 0.5em 0.4em 1.5em
+}
+DIV.avatar {
+	MARGIN: 5px; OVERFLOW: hidden; WIDTH: 160px; TEXT-ALIGN: center
+}
+UL.items {
+	PADDING-TOP:2px; PADDING-BOTTOM:2px
+}
+LI.item {
+	PADDING-TOP:3px; PADDING-BOTTOM:4px; OVERFLOW:hidden; WIDTH: 100%; BORDER-BOTTOM:#ccc 1px dotted; HEIGHT: 13px; line-height:15px; vertical-align:top
+}
+LI.item IMG {
+	vertical-align:top; PADDING-TOP:4px! important; PADDING-TOP:3px
+}
+.postauthor CITE {
+	DISPLAY: block; FONT-WEIGHT: bold; MARGIN-BOTTOM: 5px; OVERFLOW: hidden; BORDER-BOTTOM: #ddd 1px solid; HEIGHT: 21px
+}
+.postauthor DT {
+	FLOAT: left; COLOR: #666; MARGIN-RIGHT: 3px; LINE-HEIGHT: 1.6em
+}
+.postauthor DD {
+	LINE-HEIGHT: 1.6em; OVERFLOW: hidden
+}
+.postauthor P {
+	MARGIN: 0px 10px
+}
+.postauthor P EM {
+	COLOR: #090
+}
+.postauthor UL {
+	MARGIN: 5px 10px; OVERFLOW: hidden; LINE-HEIGHT: 1.6em
+}
+.postauthor LI {
+	BACKGROUND-POSITION: 0px 50%; FLOAT: left; OVERFLOW: hidden; WIDTH: 48%; TEXT-INDENT: 21px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 1.6em
+}
+.postauthor LI.sms {
+	BACKGROUND-IMAGE: url(../images/sendsms.gif)
+}
+.postauthor LI.friend {
+	BACKGROUND-IMAGE: url(../images/user_add.gif)
+}
+.postauthor DL.profile {
+	MARGIN: 5px 10px
+}
+.postauthor CITE A {
+	PADDING: 5px; FLOAT: left; OVERFLOW: hidden; HEIGHT: 10px
+}
+.box {
+	BORDER: #ddd 1px solid; PADDING-RIGHT: 1px; PADDING-LEFT: 1px; BACKGROUND: #fff; MARGIN-BOTTOM: 10px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.box H4 {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(../images/box_bg.gif) #fff repeat-x 0px 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 30px; PADDING-TOP: 0px
+}
+.box EM {
+	PADDING-LEFT: 1px; COLOR: #666; font-size:14px
+}
+.box TABLE {
+	WIDTH: 100%
+}
+.box TD {
+	BORDER-TOP: #e8e8e8 1px solid
+}
+.box LI {
+	LIST-STYLE-TYPE: none
+}
+TD.user {
+	WIDTH: 100px
+}
+TD.nums {
+	WIDTH: 80px; TEXT-ALIGN: center
+}
+TD.time {
+	WIDTH: 120px
+}
+TD.selector {
+	WIDTH: 20px; TEXT-ALIGN: center
+}
+.content {
+	FLOAT: right; WIDTH: 80%
+}
+.content .mainbox {
+	PADDING-BOTTOM: 1px
+}
+.content .management {
+	BORDER-TOP-STYLE: none; BORDER-BOTTOM: #ddd 1px solid
+}
+.content .mainbox TH {
+	BORDER-TOP-STYLE: none; BORDER-BOTTOM: #ddd 1px solid
+}
+.content .mainbox TD {
+	BORDER-TOP-STYLE: none; BORDER-BOTTOM: #ddd 1px solid
+}
+.container {
+	OVERFLOW: hidden; WIDTH: 100%; PADDING-BOTTOM: 10px
+}
+.spacectx {
+	FLOAT: right; WIDTH: 75%
+}
+.spacectx .mainbox {
+	PADDING-BOTTOM: 1px; BORDER: #ddd 1px solid; padding-top:0px
+}
+.spacectx .mainbox A.subject {
+	color: #356cab; font-weight:bold
+}
+.spacectx .mainbox A {
+	color: #000
+}
+.spacectx .mainbox A.catoff {
+	BACKGROUND: url(../images/arrow_right.gif) no-repeat 0px 38%; padding-left:12px; color: #356cab
+}
+.spacectx .mainbox A.caton {
+	BACKGROUND: url(../images/arrow_down.gif) no-repeat 0px 42%; padding-left:14px; color: #000
+}
+.spacectx .mainbox H2 {
+	PADDING-LEFT: 10px; BACKGROUND: url(../images/box_bg.gif) repeat-x 0px 0px; color: #000; FONT-SIZE: 14px; BORDER-BOTTOM: #e8e8e8 1px solid; LINE-HEIGHT: 30px
+}
+.spacectx .mainbox TBODY TH {
+	BORDER-TOP-STYLE: none; BORDER-BOTTOM: #e8e8e8 1px solid; 
+}
+.spacectx .mainbox TBODY TD {
+	BORDER-TOP-STYLE: none; BORDER-BOTTOM: #e8e8e8 1px solid; height: 22px; COLOR: #666
+}
+.spacectx LABEL {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FLOAT: right; PADDING-BOTTOM: 0px; COLOR: #666; PADDING-TOP: 0px
+}
+.side {
+	FLOAT: left; WIDTH: 19%
+}
+.side DIV {
+	BORDER: #ddd 1px solid; BACKGROUND: url(../images/box_bg.gif) #fff repeat-x 0px 0px; MARGIN-BOTTOM: 15px; margin-right:4px
+}
+.side H2 {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 10px; FONT-SIZE:14px; BORDER-LEFT: #fff 1px solid; LINE-HEIGHT: 29px; BORDER-BOTTOM: #e8e8e8 1px solid
+}
+.side UL {
+	PADDING-TOP: 3px; PADDING-BOTTOM: 3px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px
+}
+.side .credits {
+	PADDING: 6px
+}
+.side .credits LI {
+	TEXT-INDENT: 21px; LINE-HEIGHT: 23px; LIST-STYLE-TYPE: none
+}
+.side LI {
+	TEXT-INDENT: 26px; LINE-HEIGHT: 28px; LIST-STYLE-TYPE: none
+}
+.side H3 {
+	FONT-WEIGHT: normal; BACKGROUND: url(../images/arrow_right.gif) no-repeat 14px 48%
+}
+.side_on H3 {
+	FONT-WEIGHT: bold; BACKGROUND: url(../images/arrow_down.gif) no-repeat 12px 50%
+}
+.side_info H3 {
+	TEXT-INDENT: 0px; FONT-WEIGHT: normal; text-align:center; BACKGROUND: none
+}
+.side LI.current {
+	FONT-WEIGHT: bold
+}
+.side LI.current A {
+	COLOR: #666
+}
+.side .info {
+	margin-top: 5px; table-layout: fixed; overflow: hidden
+}
+.side .info TH{
+	COLOR: #666; width: 60px; TEXT-ALIGN: right; padding-right: 8px; text-align: right
+}
+.side .info TD IMG{
+	margin-right: 1px
+}
+.dropmenu {
+	PADDING-RIGHT: 15px! important; BACKGROUND-POSITION: 100% 50%; BACKGROUND-IMAGE: url(../images/arrow_down.gif)! important; CURSOR: pointer; BACKGROUND-REPEAT: no-repeat! important
+}
+.headermenu_popup {
+	WIDTH: 170px
+}
+.headermenu_popup LI {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 7em; LINE-HEIGHT: 24px; BORDER-BOTTOM: #e8e8e8 1px solid; HEIGHT: 24px
+}
+.newtopicmenu {
+	WIDTH: 85px
+}
+.newtopicmenu LI {
+	BACKGROUND: url(../images/folder_s.gif) no-repeat 3px 50%; FLOAT: left
+}
+.newtopicmenu LI.reward {
+	BACKGROUND-IMAGE: url(../images/reward.gif)
+}
+.newtopicmenu A {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 25px; FLOAT: left; PADDING-BOTTOM: 5px; WIDTH: 60px; PADDING-TOP: 6px; BORDER-BOTTOM: #e8e8e8 1px solid
+}
+.newtopicmenu A:hover {
+	COLOR: #069; TEXT-DECORATION: none
+}
+.popmenu_popup {
+	BORDER: #ddd 1px solid; PADDING: 10px; BACKGROUND: url(../images/box_bg.gif) #fff repeat-x 0px 0px; OVERFLOW: hidden; LINE-HEIGHT: 1.4em; TEXT-ALIGN: left
+}
+.popmenu_popup LI {
+	LIST-STYLE-TYPE: none
+}
+#stylelist_menu {
+	OVERFLOW: visible; WHITE-SPACE: nowrap
+}
+#stylelist_menu UL LI {
+	WHITE-SPACE: nowrap
+}
+#stylelist_menu UL LI A {
+	WHITE-SPACE: nowrap
+}
+#stylelist_menu UL LI.current {
+	FONT-WEIGHT: bold
+}
+#stylelist_menu UL LI.current A {
+	WHITE-SPACE: nowrap; COLOR: #666
+}
+.radio {
+	BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-STYLE: none
+}
+.checkbox {
+	BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-STYLE: none
+}
+.formbox TBODY STRONG {
+	COLOR: #090
+}
+.formbox LI {
+	LIST-STYLE-TYPE: none
+}
+.formbox TH {
+	WIDTH: 160px; TEXT-ALIGN: left; PADDING: 5px; BORDER-BOTTOM: #ddd 1px solid
+}
+.formbox TD {
+	PADDING: 5px; BORDER-BOTTOM: #ddd 1px solid
+}
+.formbox TABLE A {
+	COLOR: #069
+}
+.formbox LABEL {
+	CURSOR: pointer
+}
+.formbox *.tips {
+	COLOR: #999
+}
+.formbox TH UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; MARGIN: 5px 0px; PADDING-TOP: 5px
+}
+.btns TH {
+	BORDER-STYLE: none! important
+}
+.btns TD {
+	BORDER-STYLE: none! important
+}
+.scrolltop {
+	CURSOR: pointer; color: #000
+}
+.signature {
+	BACKGROUND: url(../images/signline.gif) no-repeat; MARGIN: 10px 0px; OVERFLOW: hidden; COLOR: #666; LINE-HEIGHT: 1.6em;  PADDING-TOP: 20px;
+}
+#ad_headerbanner {
+	CLEAR: right; MARGIN-TOP: 10px; FLOAT: right; padding-left:10px;
+}
+#ad_footerbanner {
+	MARGIN: 5px; TEXT-ALIGN: center; padding-bottom: 10px
+}
+.ad_text {
+	BORDER: #ddd 1px solid; PADDING: 6px; BACKGROUND: #fff repeat-x; MARGIN-BOTTOM: 10px
+}
+blockquote div{
+	 border:1px dashed #464547;
+	 clear:both;
+	 padding:0 0px 0 0px;
+	 background:#f5f5f5;
+}
+.submit {
+	BORDER-RIGHT: #fdb939 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #fffdee 1px solid; PADDING-LEFT: 10px; BACKGROUND: #fff8c5; PADDING-BOTTOM: 0px; BORDER-LEFT: #fffdee 1px solid; COLOR: #090; MARGIN-RIGHT: 1em; PADDING-TOP: 0px; BORDER-BOTTOM: #fdb939 1px solid
+}

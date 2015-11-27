@@ -1,0 +1,92 @@
+<#include "header.htm"/>
+<#import "../macros/pagination.ftl" as pagination/>
+<#import "../macros/presentation.ftl" as presentation/>
+
+<script type="text/javascript" src="${contextPath}/templates/${templateName}/js/post_show.js?${startupTime}"></script>
+<script type="text/javascript" src="${contextPath}/templates/${templateName}/js/post.js?${startupTime}"></script>
+<script type="text/javascript" src="${contextPath}/templates/${templateName}/js/pagination.js?${startupTime}"></script>
+<script type="text/javascript">
+<!--
+<#include "js/karma.js">
+<#include "js/utils.js">
+-->
+</script>
+<div id="nav">
+	<#assign breadCrumb>
+		<a class="nav" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")}</a> &raquo;
+		<a class="nav" href="${JForumContext.encodeURL("/user/profile/${u.id}")}">${u.username}${I18n.getMessage("UserProfile.profileFor")}</a> 
+		&raquo;
+		<a class="nav" href="${JForumContext.encodeURL("/posts/listByUser/${u.id}")}">${I18n.getMessage("PostShow.userPosts")}</a>
+	</#assign>
+	${breadCrumb}	
+</div>
+<DIV class=pages_btns>
+	<#assign paginationData>	
+		<@pagination.doPagination "listByUser", u.id/>
+	</#assign>
+	${paginationData}
+</DIV>
+<DIV class="mainbox viewtopic">
+	<h1>${I18n.getMessage("PostShow.userPosts")}</h1>
+	<table class="mainbox" cellspacing="1" cellpadding="3" width="100%" border="0">
+		<thead class="catalog">
+			<tr>
+				<td width="50%" height="26">${I18n.getMessage("PostShow.postAt")}</th>
+				<td width="50%" align="right">${I18n.getMessage("PostShow.messagekarmaPoints")}</th>
+			</tr>
+		</thead>
+		<!-- POST LISTING --> 
+		<#assign rowColor = ""/>
+		<#list posts as post>
+			<#if post_index % 2 == 0>
+				<#assign rowColor = "row1">
+			<#else>
+				<#assign rowColor = "row2">
+			</#if>
+
+			<#assign topic = topics.get(post.topicId) />
+			<#assign forum = forums.get(post.forumId) />
+			<tr>
+				<td width="50%">${I18n.getMessage("PostShow.postAt")}:
+					<span class="gen">
+						<b>
+							<a href="${JForumContext.encodeURL("/forums/show/${forum.id}")}">${forum.name?html}</a> 
+							&raquo; <a href="${JForumContext.encodeURL("/posts/list/${post.topicId}")}">${topic.title?default("Empty")?html}</a>
+							&raquo; <a href="${JForumContext.encodeURL("/posts/preList/${post.topicId}/${post.id}${extension}#${post.id}", "")}">${I18n.getMessage("PostShow.goToMessage")}</a>
+						</b>
+					</span>
+				</td>
+				<td align="right">
+					<script type="text/javascript">writeStars(${post.karma.karmaPoints}, ${post.id});</script>
+				</td>
+			</tr>
+			<tr>
+				<!-- Message -->
+				<td valign="top" colspan="2" style="bgcolor:white;">
+					${post.text}
+					<!-- Attachments -->
+					<#if post.hasAttachments() && (canDownloadAttachments || attachmentsEnabled)>
+						<#assign attachments = am.getAttachments(post.id, post.forumId)/>
+					</#if>
+				</td>
+			</tr>
+		</#list>
+		<!-- END OF POST LISTING -->
+	</table>
+</DIV>
+<DIV class=pages_btns>
+	${paginationData}
+</DIV>
+<div id="nav">
+	${breadCrumb}	
+</div>
+<div class="legend" id="footfilter">
+	<div class="jump_sort">
+	<table cellspacing="0" cellpadding="0" width="100%" border="0">
+		<tr>
+			<td align="right"><@presentation.forumsComboTable/></td>
+		</tr>
+	</table>
+	</div>
+</div>
+<#include "bottom.htm"/>

@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=${encoding}">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>iforums ${version} ${I18n.getMessage("Install.installation")} - ${I18n.getMessage("Install.stepError")}</title>
+<link rel="stylesheet" href="${contextPath}/templates/default/styles/style.css" type="text/css">
+<style type="text/css">
+th			{ background-image: url('${contextPath}/templates/default/images/cellpic3.gif') }
+td.cat		{ background-image: url('${contextPath}/templates/default/images/cellpic1.gif') }
+td.rowpic	{ background-image: url('${contextPath}/templates/default/images/cellpic2.jpg'); background-repeat: repeat-y }
+td.cathead,td.catsides,td.catleft,td.catright,td.catbottom { background-image: url('${contextPath}/templates/default/images/cellpic1.gif') }
+</style>
+</head>
+<body text="#000000" link="#006699" vlink="#5584AA">
+<table cellspacing="0" cellpadding="0" width="100%" border="0">
+	<tr>
+		<td>
+			<a href="${contextPath}"><img src="${contextPath}/templates/default/images/logo.jpg"  vspace="1" border="0" alt="[Logo]" /></a>
+		</td>					 
+		<td width="100%" align="center" valign="middle">
+			<table cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td valign="top" nowrap="nowrap" align="center">&nbsp;
+					
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<DIV class="mainbox forumlist">
+	<h1 align="left">iforums ${version} ${I18n.getMessage("Install.installation")} - ${I18n.getMessage("Install.stepError")}</h1>
+	<table width="100%" border="0" cellspacing="0" cellpadding="10" align="center"> 
+		<tr>
+			<td class="bodyline" width="100%" colspan="2">
+				<span class="maintitle">JForum ${version} ${I18n.getMessage("Install.installation")}
+					<font color="#ff0000"><b>${I18n.getMessage("Install.stepError")}.</b></font>
+				</span>
+				<br/><img src="${contextPath}/images/smilies/d6741711aa045b812616853b5507fd2a.gif" border="0" align="absmiddle"> 
+				<span class="gen">${message}</span>
+				<br/><span class="gen">
+					<font color="#ff0000"><b>${I18n.getMessage("Install.forHelpAccess")} <a href="http://www.jforum.net/install.htm">http://www.jforum.net/install.htm</a></b></font>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="row2" colspan="2">
+				<b>${I18n.getMessage("Install.errorRaised")}: </b><br/>
+				<#if exceptionMessage?exists>
+					<span class="gensmall">
+					<textarea readonly rows="12" cols="100" wrap="virtual" style="width:100%;">${exceptionMessage}</textarea>
+					</span>
+				</#if>
+			</td>
+		</tr>
+		<#if tryAgain?default(false) == true>
+			<form name="f" action="${contextPath}/install/install${extension}" method="post">
+			<input type="hidden" name="module" value="install">
+			<input type="hidden" name="action" value="doInstall">
+		</#if>
+		<tr> 
+		  <td valign="top"><b></td>
+		  <td align="left">
+			<#if tryAgain?default(false) == true>
+				<input type="submit" name="tryagain" class="submit" value="${I18n.getMessage("Install.tryAgain")}">&nbsp;&nbsp;
+			</#if>
+			<input type="button" class="submit" value="${I18n.getMessage("Install.modifyConfiguration")}" onClick="document.location = '${contextPath}/install/install${extension}?module=install&action=welcome';">
+			</td>
+			<#if tryAgain?default(false) == true></form></#if>
+		</tr>
+	</table>
+</DIV>
+<DIV id=footer><DIV class=wrap><DIV id=footlinks><P></P>
+
+<P><A href="mailto:zhurx4g@gmail.com">Contact us</A>&nbsp;-&nbsp;<A href="mailto:zhurx4g@gmail.com" target=_blank>iforums</A>&nbsp;-&nbsp;
+<A href="http://www.miibeian.gov.cn" target=_blank>ICP:00000000</A>&nbsp;-&nbsp;<span class="scrolltop" title="" onclick="window.scrollTo(0,0);">TOP</span>&nbsp;-&nbsp;
+</P></DIV>
+
+<P class=copyright> Powered by <STRONG><a class="copyright" href="http://code.google.com/p/iforums/" target="_blank">IForums 1.0</a> &copy; <a class="copyright" href="http://code.google.com/p/iforums/" target="_blank">IForums Team</a></span></STRONG> <EM>3.0</EM> &copy; 2010 <A
+ href="http://code.google.com/p/iforums/" target=_blank>iforums</A>  <#if session?exists && session.isAdmin()><span class="gen"><a id="adminpanel" target="_blank" href='${JForumContext.encodeURL("/admBase/login")}'>${I18n.getMessage("ForumBase.admin")}</a></span></#if></P></DIV></DIV><script src="${contextPath}/templates/default/js/ts_exchange.js" type="text/javascript"></script>
+
+</body>
+</html>

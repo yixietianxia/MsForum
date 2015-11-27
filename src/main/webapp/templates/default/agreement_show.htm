@@ -1,0 +1,22 @@
+<#include "header.htm"/>
+<div id="nav">
+<a class="nav" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")}</a>
+</div>
+<div class="mainbox formbox"><span class="headactions">
+<a class="notabs" href="/forum/help/member.jsp" target="_blank"></a></span> 
+<h1>${I18n.getMessage("User.agreement.title")}</h1>
+<table class="mainbox" align="center" border="0" cellpadding="3" cellspacing="1" width="80%">
+	<tr>
+		<td class="row1" colspan="2" width="100%">
+			<span class="gen">${agreementContents}</span>
+		</td>
+	</tr>				
+	<tr align="center">
+		<td class="catbottom" colspan="2" height="28">
+			<button class="submit" value="${I18n.getMessage("User.agreement.accept")}" name="submit" onclick="document.location = '${contextPath}/jforum${extension}?module=user&action=acceptAgreement';" type="button">${I18n.getMessage("User.agreement.accept")}</button>&nbsp;&nbsp;
+			<button class="submit" value="${I18n.getMessage("User.agreement.noAccept")}" onclick="document.location = '${JForumContext.encodeURL("/forums/list")}';" type="button">${I18n.getMessage("User.agreement.noAccept")}</button>
+		</td>
+	</tr>
+</table>
+</div>
+<#include "bottom.htm"/>

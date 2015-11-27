@@ -1,0 +1,60 @@
+<#if post.userId != 1>
+	<table>
+	<tr>
+	<td><img align="absmiddle" border="0" alt="${I18n.getMessage("UserProfile.profileFor")}" src="${contextPath}/templates/${templateName}/images/user_add.gif" alt="" />
+	<a href="${JForumContext.encodeURL("/user/profile/${user.id}")}" class="icon_profile" title="${I18n.getMessage("UserProfile.profileFor")}">${I18n.getMessage("UserProfile.profileFor")}</a></td>
+	<td><img src="${contextPath}/templates/${templateName}/images/sendsms.gif" align="absmiddle" border="0" alt="${I18n.getMessage("UserProfile.sendMessage")}" />
+	<a href="${JForumContext.encodeURL("/pm/sendTo/${user.id}")}" class="icon_profile" title="${I18n.getMessage("UserProfile.sendMessage")}">${I18n.getMessage("UserProfile.sendMessage")}</a></td>
+	</tr>
+	<tr>
+	<td>
+	<img src="${contextPath}/templates/${templateName}/images/mail.gif" alt="${I18n.getMessage("UserProfile.emailAddress")}" align="absmiddle" border="0"/>
+	<#if (user.isViewEmailEnabled() && user.email?exists && user.email?length > 0)>
+		<#assign e = user.email.split("@")/>
+		<#if e?size == 2>
+			<a class="icon_profile" href="javascript:sendEmail('${e[0]}', '${e[1]}');" title="${I18n.getMessage("UserProfile.emailAddress")}">${I18n.getMessage("UserProfile.emailAddress")}</a>&nbsp;&nbsp;
+		</#if>
+	</#if>
+	</td>
+	<td>
+	<img align="absmiddle" border="0" src="${contextPath}/templates/${templateName}/images/icon_www.gif" alt="${I18n.getMessage("UserProfile.webSite")}"/>
+	<#if (user.webSite?exists && user.webSite?length > 0)>
+		<a class="icon_profile" href="${user.webSite?html}" target="_new">${I18n.getMessage("UserProfile.webSite")}</a>
+	</#if>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<img align="absmiddle" src="${contextPath}/templates/${templateName}/images/icon_aim.gif" border="0" alt="${I18n.getMessage("User.aim")}"/>
+	<#if (user.aim?exists && user.aim?length > 0)>
+		<a target="_new" href="https://my.screenname.aol.com/_cqr/login/login.psp">${I18n.getMessage("User.aim")}</a>
+	</#if>
+	</td>
+	<td>
+	<img align="absmiddle" border="0" src="${contextPath}/templates/${templateName}/images/icon_msnm.gif" alt="${I18n.getMessage("User.msn")}"  />
+	<#if (user.msnm?exists && user.msnm?length > 0)>
+		<a href="${JForumContext.encodeURL("/user/profile/${user.id}")}">${I18n.getMessage("User.msn")}</a>
+	</#if>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<img align="absmiddle" border="0" src="${contextPath}/templates/${templateName}/images/icon_icq_add.gif" alt="${I18n.getMessage("User.icq")}" />
+	<#if (user.icq?exists && user.icq?length > 0)>
+		<a href="http://wwp.icq.com/scripts/search.dll?to=${user.icq?html}">${I18n.getMessage("User.icq")}</a>
+	</#if>
+	</td>
+	<td>
+	<img align="absmiddle" border="0" src="${contextPath}/templates/${templateName}/images/icon_qq.gif" alt="${I18n.getMessage("User.icq")}" />
+	</td>
+	</tr>
+	<tr>
+	<td colspan="2">
+	<img align="absmiddle" border="0" src="${contextPath}/templates/${templateName}/images/icon_yim.gif" alt="${I18n.getMessage("User.yahoo")}" />
+	<#if (user.yim?exists && user.yim?length > 0)>
+		<a href="http://edit.yahoo.com/config/send_webmesg?.target=${user.yim?html}&amp;.src=pg">${I18n.getMessage("User.yahoo")}</a>
+	</#if>
+	</td>
+	</tr>
+	</table>
+</#if>	

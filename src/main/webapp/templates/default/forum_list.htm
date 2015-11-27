@@ -1,0 +1,177 @@
+<#include "header.htm"/>
+<#import "../macros/presentation.ftl" as presentation/>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="${contextPath}/rss/forums${extension}" />
+
+<!--
+<div id="foruminfo">
+<div id="nav">
+<a class="forumlink" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")}</a>
+<p>
+	<#if !logged && !sso>
+		<form name="formlogin" accept-charset="${encoding}" action="${JForumContext.encodeURL("/jforum")}" method="post">
+		<input type="hidden" name="module" value="user" />
+		<input type="hidden" name="action" value="validateLogin" />
+		${I18n.getMessage("Login.user")}:<input class="post" size="10" name="username" type="text"/>
+		${I18n.getMessage("Login.password")}:<input class="post" type="password" size="10" name="password" />
+		<#if autoLoginEnabled>
+			&nbsp;&nbsp; &nbsp;&nbsp;
+			<label for="autologin">${I18n.getMessage("Login.autoLogon")}</label> <input class="text" type="checkbox" name="autologin" id="autologin"/>
+		</#if>
+		<input class="submit" type="submit" value="${I18n.getMessage("Login.enter")}" name="login"/> 
+		</form>
+	</#if>
+
+	<#if logged>
+		<span class="gensmall">${session.username}:${I18n.getMessage("ForumListing.lastVisit")}: ${lastVisit}</span><br />
+	</#if>
+
+</p>
+<script src="${contextPath}/templates/default/js/md5.js" type="text/javascript"></script>
+<script type="text/javascript">
+function checkfield(theform) {
+	if(trim($('userID').value) == '') {
+		$('userID').focus();	return false;
+	} else if(trim($('pwd1').value) == '') {
+		$('pwd1').focus(); return false;
+	} else {
+		$('pwd').value = hex_md5(trim($('pwd1').value)); 
+		$('pwd1').value = '';
+		theform.submit();return false;
+	}
+}
+</script>
+
+</div>
+<div id="headsearch">
+<p style="margin-bottom: 5px; margin-right: 2px;">
+${I18n.getMessage("ForumListing.totalMessagesInfo", [ totalMessages ])}&nbsp;
+${I18n.getMessage("ForumListing.registeredUsers", [ totalRegisteredUsers ])}&nbsp;
+${I18n.getMessage("ForumListing.newestUser")} <a href="${JForumContext.encodeURL("/user/profile/${lastUser.id}")}">${lastUser.username}</a>
+<script type="text/javascript">
+function doSearch() {
+	if(trim($('frmsearch').q.value)=='')
+	{
+		alert('Input key');
+		return false;
+	}
+	frmsearch.submit();
+}
+</script>
+<form id="frmsearch" name="frmsearch" action="http://www.google.cn/search" onsubmit="doSearch(); return false;" method="get" target="google_window">
+<input value="GB2312" name="ie" type="hidden"> 
+<input value="GB2312" name="oe" type="hidden"> 
+<input value="zh-CN" name="hl" type="hidden"> 
+<input value="localhost/ejforum" name="sitesearch" type="hidden"> 
+<div style="float: left; width: 100px;">&nbsp;</div>
+<img onclick="javascript:window.open('http://www.google.cn/')" src="${contextPath}/templates/${templateName}/images/google.png"/>
+<input maxlength="255" size="12" name="q" class="search">&nbsp; 
+<a href="#" onclick="doSearch(); return false;" style="vertical-align: middle;">
+<img src="${contextPath}/templates/${templateName}/images/search.gif" alt="searchInsite" align="absbottom" border="0"></a></form></div></div>
+-->
+
+<div id="ad_text"></div>
+<!-- START FORUM LISTING -->
+
+<#list allCategories as category>
+<DIV class="mainbox forumlist">
+	<SPAN class=headactions><IMG id=section_0_img title="open/close" onClick="toggle_collapse('section_${category.id}');"
+		alt="open/close" src="${contextPath}/templates/${templateName}/images/collapsed_no.gif"></SPAN>
+	<H3><a href="${JForumContext.encodeURL("/forums/list")}?catid=${category.id}">${category.name}</a></H3>
+	<TABLE id="section_${category.id}" cellSpacing=0 cellPadding=0>
+	<TBODY>
+	  	<TR>
+		  	<TD valign="middle" align="center" width="5%">&nbsp;</TD>
+		    <TD>${I18n.getMessage("ForumListing.forums")}</TD>
+		    <TD class="nums">${I18n.getMessage("ForumListing.totalTopics")}</TD>
+		    <TD class="nums">${I18n.getMessage("ForumListing.totalMessages")}</TD>
+		    <TD align="right" width="15%">${I18n.getMessage("ForumListing.lastMessage")}</TD>
+	    </TR>
+		<#if (category.getForums().size()==0)>
+		<TR>
+			<TD valign="middle" align="center" width="5%">&nbsp;</TD>
+	  		<TD colspan="4">${I18n.getMessage("ForumIndex.withoutBroad")}</TD>
+	  	</TR>
+		</#if>
+	<#list category.getForums() as forum>
+	<#assign lpi = forumRepository.getLastPostInfo(forum.id)/>
+	<TR>
+	<td align="center">
+		<A title="Open In New Window" href='${JForumContext.encodeURL("/forums/show/${forum.id}")}' target=_blank>
+			<#if forum.unread>
+				<img src="${contextPath}/templates/${templateName}/images/forum_new.gif" alt="[New Folder]" />
+			<#else>
+				<img src="${contextPath}/templates/${templateName}/images/forum.gif" alt="[Folder]" />
+			</#if>
+		</A>
+	</td>
+	<td align="left">
+		<b><a class="forumlink" href="${JForumContext.encodeURL("/forums/show/${forum.id}")}">${forum.name?html}</a></b>
+		<br/>${forum.description?default("")}
+		<p class="moderators">
+			<!--${forum.description?default("")}-->
+			${I18n.getMessage("ForumIndex.moderators")}:
+			<#assign moderators = forumRepository.getModeratorIdList(forum.id)/>
+			<#if (moderators.size()>0)>
+				<#list moderators as m>
+				  <a href="${JForumContext.encodeURL("/user/profile/${m.id}")}">${m.username?html}</a>
+				</#list>
+			<#else>
+				${I18n.getMessage("ForumIndex.withoutAdmins")}
+			</#if>
+		</p>
+	</td>
+	<TD class="nums">${forum.totalTopics}</TD>
+	<TD class="nums">
+	<#assign total = forum.totalPosts/>
+	<#if (total == 0 && forum.totalTopics > 0)>
+		<#assign total = forum.totalTopics/>
+	</#if>
+	<#if (total > 0)>${total}<#else>${I18n.getMessage("ForumListing.noMessages")}</#if>
+	</TD>    
+	<TD class=lastpost align="right">
+	<#if (lpi.postTimeMillis > 0)>
+		<#if (lpi.postTimeMillis > 0)>
+			<#assign startPage = ""/>
+			<#if (lpi.topicReplies + 1 > topicsPerPage)>
+				<#assign startPage = ((lpi.topicReplies / topicsPerPage)?int * topicsPerPage) +"/"/>
+			</#if>
+
+			<#assign url = JForumContext.encodeURL("/posts/list/${startPage}${lpi.topicId}") + "#" + lpi.postId/>
+			<em><a href="${url}">${lpi.postDate}</a></em>
+		</#if>
+		<CITE>by &nbsp;
+		<#if (lpi.userId > 0)><a href="${JForumContext.encodeURL("/user/profile/${lpi.userId}")}" target='_blank'></#if>${lpi.username}</a>
+		</CITE>
+	<#else>
+			${I18n.getMessage("ForumListing.noMessages")}
+	</#if>
+	</TD>
+	</TR>
+	</TBODY>
+	</#list>
+	</TABLE></DIV>
+</#list>
+<div class="box" id="online">
+<h4>
+<strong>${I18n.getMessage("ForumListing.whoIsOnline")}</strong>
+<#assign adminColor = "class='admin'"/>
+<#assign moderatorColor = "class='moderator'"/>
+<#assign color = ""/>
+
+${I18n.getMessage("ForumListing.numberOfUsersOnline", [ totalOnlineUsers, totalRegisteredOnlineUsers, totalAnonymousUsers,""])}&nbsp;&nbsp;
+${I18n.getMessage("ForumListing.mostUsersEverOnline", [ mostUsersEverOnline.getTotal(), mostUsersEverOnline.getDate()?string ])}
+</h4>
+</div>
+
+<div class="legend" id="footfilter" style="valign:center">
+	<div align="left" style="valign:center">
+		<label><img alt="new" src="${contextPath}/templates/${templateName}/images/forum_new.gif" align="absmiddle">${I18n.getMessage("ForumListing.newMessages")}</label>
+		<label><img alt="nonew" src="${contextPath}/templates/${templateName}/images/forum.gif" align="absmiddle">${I18n.getMessage("ForumListing.noNewMessages")}</label>
+		<label><img alt="blocked" src="${contextPath}/templates/${templateName}/images/forum_lock.gif" align="absmiddle">${I18n.getMessage("ForumListing.blocked")}</label>
+	</div>
+	<div class="jump_sort" style="valign:center">
+			<@presentation.forumsComboTable/>
+	</div> 
+</div>
+	
+<#include "bottom.htm"/>

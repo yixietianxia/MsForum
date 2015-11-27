@@ -1,0 +1,157 @@
+<#setting number_format = "#"/>
+<#setting datetime_format = dateTimeFormat/>
+<#assign logged = logged?default(false)/>
+<#assign language = language?default("en_US")/>
+<#assign hasCodeBlock = hasCodeBlock?default(false)/>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=${encoding}" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<link rel="icon" href="${contextPath}/favicon.ico" mce_href="${contextPath}/favicon.ico" type="image/x-icon">
+<style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/style.css?${startupTime} );</style>
+<SCRIPT src="${contextPath}/templates/${templateName}/js/common.js" type=text/javascript></SCRIPT>
+<SCRIPT src="${contextPath}/templates/${templateName}/js/ajax.js" type=text/javascript></SCRIPT>
+<title>${pageTitle?default("iforums")?html}</title>
+
+</head>
+<body class="${language}">
+<table cellspacing="0" cellpadding="0" width="100%" border="0">
+	<tr>
+		<td>
+			<a href="${homepageLink}"><img src="${contextPath}/templates/${templateName}/images/logo.jpg"  vspace="1" border="0" alt="[Logo]" /></a>
+		</td>					 
+		<td width="100%" align="right" valign="middle">
+			<!--span class="boardtitle">${forumTitle?default("JForum")}</span-->
+			<table cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td valign="top" nowrap="nowrap" align="center">
+					
+		
+		
+		
+					
+<!-- 调整代码 -->					
+<div id="foruminfo">
+<div id="nav" style="width:99%;">
+<p style="text-align: right;margin-right: 5px;">
+	<#if !logged && !sso>
+		<form style="text-align: right;" name="formlogin" accept-charset="${encoding}" action="${JForumContext.encodeURL("/jforum")}" method="post">
+		<input type="hidden" name="module" value="user" />
+		<input type="hidden" name="action" value="validateLogin" />
+		${I18n.getMessage("Login.user")}:<input class="post" size="10" name="username" type="text"/>
+		${I18n.getMessage("Login.password")}:<input class="post" type="password" size="10" name="password" />
+		<#if autoLoginEnabled>
+			&nbsp;&nbsp; &nbsp;&nbsp;
+			<label for="autologin">${I18n.getMessage("Login.autoLogon")}</label> <input class="text" type="checkbox" name="autologin" id="autologin"/>
+		</#if>
+		<input class="submit" type="submit" value="${I18n.getMessage("Login.enter")}" name="login"/> 
+		<a id="register" class="submit" href="${JForumContext.encodeURL("/user/insert")}">${I18n.getMessage("ForumBase.register")}</a>
+		
+		</form>
+	</#if>
+
+	<#if logged>
+		<span class="gensmall">${session.username}:${I18n.getMessage("ForumListing.welcomeVisit")}</span>
+		<#if !sso>
+			&nbsp;<a id="logout" class="mainmenu" href="${JForumContext.encodeURL("/user/logout")}">
+			${I18n.getMessage("ForumBase.logout")}</a>
+		</#if>
+	</#if>
+
+</p>
+<script src="${contextPath}/templates/default/js/md5.js" type="text/javascript"></script>
+<script type="text/javascript">
+function checkfield(theform) {
+	if(trim($('userID').value) == '') {
+		$('userID').focus();	return false;
+	} else if(trim($('pwd1').value) == '') {
+		$('pwd1').focus(); return false;
+	} else {
+		$('pwd').value = hex_md5(trim($('pwd1').value)); 
+		$('pwd1').value = '';
+		theform.submit();return false;
+	}
+}
+</script>
+
+</div>
+<div id="headsearch" style="width:99%;">
+<p style="margin-bottom: 5px; margin-right: 2px;text-align: right;">
+<script type="text/javascript">
+function doSearch() {
+	if(trim($('frmsearch').q.value)=='')
+	{
+		alert('输入关键词');
+		return false;
+	}
+	frmsearch.submit();
+}
+</script>
+<form style="text-align: right; margin-right: 10px;" id="frmsearch" name="frmsearch" action="http://www.google.cn/search" onsubmit="doSearch(); return false;" method="get" target="google_window">
+<input value="GB2312" name="ie" type="hidden"> 
+<input value="GB2312" name="oe" type="hidden"> 
+<input value="zh-CN" name="hl" type="hidden"> 
+<input value="localhost/ejforum" name="sitesearch" type="hidden"> 
+<div style="float: left; width: 100px;">&nbsp;</div>
+<input maxlength="255" size="12" name="q" class="search" onblur="if (this.value == '') this.value = '${I18n.getMessage("ForumIndex.searchSiteForum")}...';" onclick="if (this.value == '${I18n.getMessage("ForumIndex.searchSiteForum")}...') this.value = '';" value="${I18n.getMessage("ForumIndex.searchSiteForum")}..." size="20" name="search_keywords" class="inputSearchForum"/>&nbsp; 
+<a href="#" onclick="doSearch(); return false;" style="vertical-align: middle;">
+<img src="${contextPath}/templates/${templateName}/images/search.gif" alt="searchInsite" align="absbottom" border="0"></a>
+</form>
+</p>
+</div>
+</div>
+<!-- 调整代码end -->						
+						
+						
+						
+						
+					
+					
+					
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<div id="headermenu">
+	<ul>
+	<li><a id="backtosite" class="mainmenu" href="${homepageLink}">${I18n.getMessage("ForumBase.backToSite")}</a>&nbsp;</li>
+	<li><a id="latest" class="mainmenu" href="${JForumContext.encodeURL("/recentTopics/list")}">${I18n.getMessage("ForumBase.recentTopics")}</a></li>
+	<li><a id="hottest" class="mainmenu" href="${JForumContext.encodeURL("/hottestTopics/list")}">${I18n.getMessage("ForumBase.hottestTopics")}</a></li>
+	<li><a id="search" class="mainmenu" href="${JForumContext.encodeURL("/search/filters")}">${I18n.getMessage("ForumBase.search")}</a></li>
+	<li><a id="latest2" class="mainmenu" href="${JForumContext.encodeURL("/user/list")}">${I18n.getMessage("ForumBase.usersList")}</a></li>
+	
+	<#if canAccessModerationLog?default(false)>
+		<li><a id="moderationlog" class="mainmenu" href="${JForumContext.encodeURL("/moderation/showActivityLog")}">${I18n.getMessage("ModerationLog.moderationLog")}</a></li>
+	</#if>
+	
+	<#if logged>
+		<li><a id="myprofile" class="mainmenu" href="${JForumContext.encodeURL("/user/edit/${session.userId}")}">
+		 ${I18n.getMessage("ForumBase.profile")}</a>&nbsp; </li>
+		<#if bookmarksEnabled>
+			<li><a class="mainmenu" href="${JForumContext.encodeURL("/bookmarks/list/${session.userId}")}">
+			${I18n.getMessage("Bookmarks.myBag")}</a>&nbsp;</li>
+		</#if>
+		<li><a id="privatemessages" class="mainmenu" href="${JForumContext.encodeURL("/pm/inbox")}">
+			<#if (session.privateMessages > 0)>
+				${I18n.getMessage("ForumBase.newPm")}: (${session.privateMessages})
+			<#else>
+				${I18n.getMessage("ForumBase.privateMessages")}
+			</#if>
+		</a>&nbsp;</li>
+		<!--  
+		<#if !sso>
+			<li><a id="logout" class="mainmenu" href="${JForumContext.encodeURL("/user/logout")}">
+			${I18n.getMessage("ForumBase.logout")} ${session.username} </a></li>
+		</#if>
+		-->
+	</#if>
+	</ul>
+</div>
+
+<table width="100%" border="0">
+	<tr>
+		<td>
+

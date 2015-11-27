@@ -1,0 +1,78 @@
+<#include "header.htm"/>
+<#import "../macros/pagination.ftl" as pagination>
+<#import "../macros/presentation.ftl" as presentation/>
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="${contextPath}/rss/recentTopics${extension}" />
+<script type="text/javascript" src="${contextPath}/templates/${templateName}/js/pagination.js?${startupTime}"></script>
+
+<#assign breadCrumb>
+<div id="nav">
+<a class="nav" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")}</a>
+&raquo;
+<a id="latest3" class="nav" href="${JForumContext.encodeURL("/recentTopics/list")}">${I18n.getMessage("ForumBase.recentTopics")}</a>
+</div>
+</#assign>
+${breadCrumb}
+
+<#if !rssEnabled>
+	<div id="headfilter">
+		<ul class="tabs">
+			<li style="border: medium none;">
+				<a href="${contextPath}/rss/recentTopics${extension}"><img src="${contextPath}/templates/${templateName}/images/xml_button.gif" alt="[XML]" border="0"></a>
+			</li>
+		</ul>
+	</div>
+</#if>
+<div class="mainbox formbox"><span class="headactions">
+<a class="notabs" href="/forum/help/member.jsp" target="_blank"></a></span> 
+<h1>${I18n.getMessage("ForumBase.recentTopics")}</h1>
+<table class="mainbox" cellspacing="1" cellpadding="4" width="100%" border="0">
+	<thead>
+		<tr>
+			<td>&nbsp;${I18n.getMessage("Forums.Form.ForumName")}</td>
+			<td colspan="2">&nbsp;${I18n.getMessage("ForumIndex.topics")}</td>
+			<td>${I18n.getMessage("ForumIndex.answers")};</td>
+			<td>${I18n.getMessage("ForumIndex.author")}</td>
+			<td>${I18n.getMessage("ForumIndex.views")}</td>
+			<td align="right">${I18n.getMessage("ForumIndex.lastMessage")}</td>
+		</tr>
+	</thead>
+
+	<!-- TOPICS LISTING -->
+	<#list topics as topic>
+	<tr>
+		<td valign="middle"><b><a class="postdetails" href="${JForumContext.encodeURL("/forums/show/${forums.get(topic_index).getId()}")}">${forums.get(topic_index).getName()}</a></b></td>
+		<td valign="middle"><@presentation.folderImage topic/></td>
+		<td width="50%">
+			<a href="${JForumContext.encodeURL("/posts/list/${topic.id}")}"><#if (topic.title?length == 0)>No Subject<#else>${topic.title?html}</#if></a>
+
+			<#if topic.paginate>
+				<span class="gensmall">
+				<@pagination.littlePostPagination topic.id, postsPerPage, topic.totalReplies/>				
+				</span>
+			</#if>		
+		</td>
+
+		<td valign="middle"><span class="postdetails">${topic.totalReplies}</span></td>
+		<td valign="middle">
+			<span class="name"><a href="${JForumContext.encodeURL("/user/profile/${topic.postedBy.id}")}">${topic.postedBy.username}</a></span>
+		</td>
+
+		<td valign="middle"><span class="postdetails">${topic.totalViews}</span></td>
+		<td class="lastpost" align="right">
+			<#if (topic.lastPostTime?length > 0)>
+				<#assign startPage = ""/>
+				<#if (topic.totalReplies + 1 > postsPerPage?number)>
+					<#assign startPage = ((topic.totalReplies / postsPerPage?number)?int * postsPerPage?number) +"/"/>
+				</#if>
+				<em><a href="${JForumContext.encodeURL("/posts/list/${startPage}${topic.id}")}#${topic.lastPostId}">${topic.lastPostTime}</a></em>
+				<br/><cite>by&nbsp;<a href="${JForumContext.encodeURL("/user/profile/${topic.lastPostBy.id}")}">${topic.lastPostBy.username}</a></cite>
+			</#if>		 
+		</td>
+	</tr>
+	</#list>		
+	<!-- END OF TOPICS LISTING -->
+</table>  
+</div>
+${breadCrumb}
+<#include "bottom.htm"/>

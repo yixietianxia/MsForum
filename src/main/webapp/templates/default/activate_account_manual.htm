@@ -1,0 +1,58 @@
+<#include "header.htm"/>
+<script type="text/javascript">
+function validateForm(f)
+{
+	if (f.user_id.value == "") {
+		alert("${I18n.getMessage("ActivateAccount.fillUserId")}");
+		f.user_id.focus();
+		
+		return false;
+	}
+
+    if (isNaN(f.user_id.value)) {
+        alert("${I18n.getMessage("ActivateAccount.invalidUserId")}");
+		f.user_id.focus();
+		
+		return false;
+	}
+	
+	if (f.hash.value == "") {
+		alert("${I18n.getMessage("ActivateAccount.fillHash")}");
+		f.hash.focus();
+		
+		return false;
+	}
+
+	return true;
+}
+</script>
+
+<form id="formregister" accept-charset="${encoding}" name="formactivate" action="${JForumContext.encodeURL("/jforum")}" method="post" onsubmit="return validateForm(this);">
+<input type="hidden" name="action" value="activateAccount" />
+<input type="hidden" name="module" value="user" />
+
+<div id="nav"><a class="nav" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")}</a></div>
+<div class="mainbox formbox">
+	<h1>${I18n.getMessage("ActivateAccount.title")}<font color="red">(${I18n.getMessage("User.requiredFields")})</font></h1>
+	<table class="mainbox" cellspacing="1" cellpadding="3" width="100%" border="0">
+		<tr>
+			<td class="row1" width="15%" >${I18n.getMessage("ActivateAccount.userId")}: *</td>
+			<td class="row2"><input class="post" type="text" style="WIDTH: 200px" maxlength="25" size="25" name="user_id"/></td>
+		</tr>
+	        
+		<tr>
+			<td class="row1" width="15%" >${I18n.getMessage("ActivateAccount.hash")}: *</td>
+			<td class="row2"><input class="post" type="text" style="WIDTH: 200px" maxlength="255" size="25" name="hash"/></td>
+		</tr>
+	        
+		<tr align="center">
+			<td></td>
+			<td align="left">
+				<input class="submit" type="submit" value="${I18n.getMessage("User.submit")}" name="submit" />&nbsp;&nbsp;
+				<input class="submit" type="reset" value="${I18n.getMessage("User.reset")}" name="reset" />
+			</td>
+		</tr>
+	</table>
+</div>
+</form>
+<#include "bottom.htm"/>

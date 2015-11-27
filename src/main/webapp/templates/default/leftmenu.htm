@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF8" />
+		<title>${pageTitle?default("iforums")?html}</title>
+		<meta name="keywords" content="Discuz!,Board,Comsenz,forums,bulletin board,">
+		<meta name="description" content="${pageTitle?default("iforums")?html}">
+		<meta name="generator" content="${pageTitle?default("iforums")?html}">
+		<meta name="MSSmartTagsPreventParsing" content="TRUE">
+		<meta http-equiv="MSThemeCompatible" content="Yes">
+		<link rel="stylesheet" type="text/css" id="css" href="${contextPath}/templates/frame/styles/leftmenu.css">
+		<style type="text/css">
+			html { background: #FFF; }
+			body {
+			margin: 0px;
+			padding: 2px;
+			background: #FFF;
+			/*background-image: url(${contextPath}/templates/frame/images/frame_bg.gif);
+			background-attachment: fixed;
+			background-position: right;
+			background-repeat: repeat-y;*/
+			}
+			.out {
+			padding: 0.2em;
+			width: 96%;
+			height: 100%;
+			overflow: auto;
+			text-align: left;
+			overflow-x: hidden;
+			}
+			
+			.tree {
+			font: 12px Verdana, Helvetica, Arial, sans-serif;
+			color: #666;
+			white-space: nowrap;
+			padding-left: 0.4em;
+			}
+			.tree img {
+			border: 0px;
+			vertical-align: middle;
+			}
+			.tree a.node, .tree a.checked {
+				white-space: nowrap;
+				padding: 1px 2px 1px 2px;
+			}
+			.tree a.node:hover, .tree a.checked:hover {
+			text-decoration: underline;
+			}
+			.tree a.checked {
+			background: FRAMEBGCOLOR;
+			color: #444;
+			}
+			.tree .clip {
+			overflow: hidden;
+			}
+			h1 { padding-left: 10px; font-weight: bold; height: 2.4em; line-height: 2.4em; }
+			h2 { padding-left: 10px; border-bottom: 1px solid #DDD; font-weight: normal; margin-bottom: 2em;}
+			h3 { border: 1px solid CATBORDER; padding: 3px 5px; background: CATCOLOR no-repeat 3px 50%; margin-top: 2em; padding-top: 0.4em; font-weight: normal;}
+			strong { font-weight: bold; }
+		</style>
+		<script type="text/javascript">var IMGDIR = '${contextPath}/templates/frame/images';var attackevasive = '0';</script>
+		<script src="${contextPath}/templates/frame/js/common.js" type="text/javascript"></script>
+		<script src="${contextPath}/templates/frame/js/tree.js" type="text/javascript"></script>
+		<script src="${contextPath}/templates/frame/js/iframe.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="out">
+			<h1>${pageTitle?default("iforums")?html}</h1>
+			<h2>
+			<#if logged>
+				<strong>${session.username},${I18n.getMessage("Admin.welcome")}!</strong>
+			<#else>
+				<strong>
+					<a href="${JForumContext.encodeURL("/user/insert")}" target="main" onclick="parent.frames['main'].location.href='${JForumContext.encodeURL("/user/insert")}';">[${I18n.getMessage("ForumBase.register")}]</a>
+					<a href="${JForumContext.encodeURL("/user/login")}" target="main" onclick="parent.frames['main'].location.href='${JForumContext.encodeURL("/user/login")}';">[${I18n.getMessage("ForumBase.login")}]</a>
+				</strong>
+			</#if>
+			</h2>
+			<div id="root">
+				<script type="text/javascript">
+					var tree = new dzTree('tree');
+					tree.addNode(0, -1, '${I18n.getMessage("ForumListing.forumIndex")}', '${JForumContext.encodeURL("/forums/list")}', 'main', true,'${I18n.getMessage("ForumListing.forumIndex")}');
+					<#if logged>
+					tree.addNode(99999998, 0, '${I18n.getMessage("ForumListing.lastVisitMessages")}', '${JForumContext.encodeURL("/forums/newMessages")}', 'main', true,'${I18n.getMessage("ForumListing.readLastVisitMessages")}');
+					</#if>
+					tree.addNode(99999999, 0, '${I18n.getMessage("ForumBase.recentTopics")}', '${JForumContext.encodeURL("/recentTopics/list")}', 'main', true, '${I18n.getMessage("ForumBase.recentTopics")}');
+					<#list allCategories as category>
+						tree.addNode(${category.id}, 0, '${category.name}', '${JForumContext.encodeURL("/forums/list")}?catid=${category.id}', 'main', false,'${category.name}');
+						<#list category.getForums() as forum>
+							tree.addNode(${category.id}*10+${forum.id}, ${category.id}, '${forum.name?html}', '${JForumContext.encodeURL("/forums/show/${forum.id}")}', 'main', false,'${forum.description?default("")}');
+						</#list>
+					</#list>
+					tree.show();
+				</script>
+			</div>
+			<div class="box" id="online">
+				<h3>
+				<strong>${I18n.getMessage("ForumListing.whoIsOnline")}</strong><br/>
+				<#assign adminColor = "class='admin'"/>
+				<#assign moderatorColor = "class='moderator'"/>
+				<#assign color = ""/>
+				${I18n.getMessage("ForumListing.numberOfUsersOnline", [ totalOnlineUsers, totalRegisteredOnlineUsers, totalAnonymousUsers,"<br/>" ])}
+				</h3>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//ajaxget('misc.php?action=getonlines&inajax=1','onlinenum');
+			//window.setInterval("ajaxget('misc.php?action=getonlines&inajax=1','onlinenum', '')", 180000);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,82 @@
+<#include "header.htm"/>
+<#import "../macros/pagination.ftl" as pagination>
+<#import "../macros/presentation.ftl" as presentation/>
+
+<script type="text/javascript" src="${contextPath}/templates/${templateName}/js/pagination.js?${startupTime}"></script>
+<div id="nav">
+	<a class="nav" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")}</a> &raquo;
+	<a class="nav" href="${JForumContext.encodeURL("/user/profile/${u.id}")}">${I18n.getMessage("UserProfile.profileFor")} ${u.username}</a> 
+	&raquo;
+	<a class="nav" href="${JForumContext.encodeURL("/recentTopics/showTopicsByUser/${u.id}")}">${u.username?html}${I18n.getMessage("ForumListing.userTopics")}</a>
+</div>
+<DIV class=pages_btns>
+	<#assign paginationData>
+		<@pagination.doPagination action, u.id/>
+	</#assign>
+	${paginationData}
+</DIV>
+<DIV class="mainbox viewtopic">
+	<h1>${u.username?html}${I18n.getMessage("ForumListing.userTopics")} </h1>
+	<table class="mainbox" cellspacing="1" cellpadding="4" width="100%" border="0">
+		<thead class="category">
+			<tr>
+				<td width="15px"></td>
+				<td align="left">${I18n.getMessage("Forums.Form.ForumName")}</td>
+				<td align="left">${I18n.getMessage("ForumIndex.topics")}</td>
+				<td align="center">&nbsp;${I18n.getMessage("ForumIndex.answers")}&nbsp;</td>
+				<td class="author" align="center">&nbsp;${I18n.getMessage("ForumIndex.author")}&nbsp;</td>
+				<td class="nums" align="center">&nbsp;${I18n.getMessage("ForumIndex.views")}&nbsp;</td>
+				<td class="lastpost" align="right">&nbsp;${I18n.getMessage("ForumIndex.lastMessage")}&nbsp;</td>
+			</tr>
+		</thead>
+		<!-- TOPICS LISTING -->
+		<#list topics as topic>
+		<tr>
+			<td valign="middle" align="left" width="15px"><@presentation.folderImage topic/></td>
+			<#assign forum = forums.get(topic.forumId)/>
+			<td valign="middle" align="left"><a class="postdetails" href="${JForumContext.encodeURL("/forums/show/${forum.id}")}">${forum.name?html}</a></td>
+			<td align="left" width="30%">
+				<span class="topictitle">
+				<a href="${JForumContext.encodeURL("/posts/list/${topic.id}")}"><#if (topic.title?length == 0)>No Subject<#else>${topic.title?html}</#if></a>
+				</span>
+
+				<#if topic.paginate>
+					<span class="gensmall">
+					<br />
+					<@pagination.littlePostPagination topic.id, postsPerPage, topic.totalReplies/>				
+					</span>
+				</#if>		
+			</td>
+
+			<td class="row2" valign="middle" align="center"><span class="postdetails">${topic.totalReplies}</span></td>
+			<td class="row3" valign="middle" align="center">
+				<span class="name"><a href="${JForumContext.encodeURL("/user/profile/${topic.postedBy.id}")}">${topic.postedBy.username?html}</a></span>
+			</td>
+
+			<td class="row2" valign="middle" align="center"><span class="postdetails">${topic.totalViews}</span></td>
+			<td class="lastpost" valign="middle" align="right">
+				<#if (topic.lastPostTime?length > 0)>
+					<#assign startPage = ""/>
+					<#if (topic.totalReplies + 1 > postsPerPage?number)>
+						<#assign startPage = ((topic.totalReplies / postsPerPage?number)?int * postsPerPage?number) +"/"/>
+					</#if>
+					<em><a href="${JForumContext.encodeURL("/posts/list/${startPage}${topic.id}")}#${topic.lastPostId}">${topic.lastPostTime}</a></em>
+					<cite>by <a href="${JForumContext.encodeURL("/user/profile/${topic.lastPostBy.id}")}">${topic.lastPostBy.username?html}</a></cite>
+				</#if>
+			</td>
+		</tr>
+		</#list>		
+		<!-- END OF TOPICS LISTING -->
+		
+	</table>
+</DIV>
+<DIV class=pages_btns>
+	${paginationData}
+</DIV>
+<div id="nav">
+	<a class="nav" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")}</a> &raquo;
+	<a class="nav" href="${JForumContext.encodeURL("/user/profile/${u.id}")}">${I18n.getMessage("UserProfile.profileFor")} ${u.username}</a> 
+	&raquo;
+	<a class="nav" href="${JForumContext.encodeURL("/recentTopics/showTopicsByUser/${u.id}")}">${u.username?html}${I18n.getMessage("ForumListing.userTopics")}</a>
+</div>
+<#include "bottom.htm"/>

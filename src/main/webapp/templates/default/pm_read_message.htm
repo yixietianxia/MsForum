@@ -1,0 +1,73 @@
+<#include "header.htm"/>
+
+<div id="nav">
+<a class="nav" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")}</a>
+</div>
+<div id="headfilter">
+<ul class="tabs">
+		<li <#if inbox?default(false)>class="spec"</#if>>
+			<a href="${JForumContext.encodeURL("/pm/inbox")}">${I18n.getMessage("PrivateMessage.inbox")}</a>
+		</li>
+		<li <#if sentbox?default(false)>class="spec"</#if>>
+			<a href="${JForumContext.encodeURL("/pm/sentbox")}" title="${I18n.getMessage("PrivateMessage.sentbox")}">${I18n.getMessage("PrivateMessage.sentbox")}</a>
+		</li>
+		<li>
+			<a href="${JForumContext.encodeURL("/pm/send")}">${I18n.getMessage("PrivateMessage.title")}</a>
+		</li>
+		<li style="border: medium none;">
+			<a href="${JForumContext.encodeURL("/pm/reply/${pm.id}")}">${I18n.getMessage("PrivateMessage.reply")}</a>
+		</li>
+	</ul>
+</div>
+<div class="mainbox forumlist">
+	<h1>${I18n.getMessage("PrivateMessage.inboxMessage")}</h1>
+	<form action="${JForumContext.encodeURL("/jforum")}" method="post">
+	<input type="hidden" name="module" value="${moduleName}" />
+	<input type="hidden" name="action" value="delete" />
+		<table class="mainbox" cellspacing="1" cellpadding="4" width="100%" border="0">
+			<tbody>
+				<tr>
+					<td class="row2" width="5%"><b>${I18n.getMessage("PrivateMessage.from")}:</b></td>
+					<td class="row2" colspan="2"><b><a class="nav" href="${JForumContext.encodeURL("/user/profile/${pm.fromUser.id}")}">${pm.fromUser.username}</a></b></td>
+				</tr>
+				<tr>
+					<td class="row2" width="5%"><b>${I18n.getMessage("PrivateMessage.to")}:</b></td>
+					<td class="row2" colspan="2"><b><a class="nav" href="${JForumContext.encodeURL("/user/profile/${pm.toUser.id}")}">${pm.toUser.username}</a></b></td>
+				</tr>
+				<tr>
+					<td class="row2" width="5%"><b>${I18n.getMessage("PrivateMessage.date")}:</b></td>
+					<td class="row2" colspan="2"><b>${pm.formatedDate}</b></td>
+				</tr>
+				<tr>
+					<td class="row2" width="5%"><b>${I18n.getMessage("PrivateMessage.subject")}:</b></td>
+					<td class="row2"><b>${pm.post.subject?html}</b></td>
+					<td class="row2" nowrap="nowrap" align="right">
+						<a href="${JForumContext.encodeURL("/pm/quote/${pm.id}")}" class="icon_quote"><img src="${contextPath}/images/transp.gif" alt="" /></a>
+					</td>
+				</tr>
+				<tr>
+					<td class="row1" valign="top" colspan="3">
+						<span class="postbody">${pm.post.text}
+						<#if (pm.fromUser.attachSignatureEnabled && pm.fromUser.signature?exists && pm.post.isSignatureEnabled())>
+						<hr/>
+						<b>${I18n.getMessage("User.signature")}:</b><span class="gensmall">${pm.fromUser.signature}</span>
+						</#if>
+						</span>
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="catbottom" align="right" colspan="3" height="28">
+						<input type="hidden" value="${pm.id}" name="id" />
+						<input class="submit" type="button" onclick="document.location='${JForumContext.encodeURL("/pm/reply/${pm.id}")}';" value="${I18n.getMessage("PrivateMessage.reply")}"/>
+						<input class="submit" type="submit" value="${I18n.getMessage("PrivateMessage.removeMessage")}" name="delete" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>
+<div id="nav">
+<a class="nav" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")}</a>
+</div>
+<#include "bottom.htm"/>
