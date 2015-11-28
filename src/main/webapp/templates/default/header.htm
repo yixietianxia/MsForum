@@ -5,7 +5,7 @@
 <#assign hasCodeBlock = hasCodeBlock?default(false)/>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=${encoding}" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="-1" />
 <link rel="icon" href="${contextPath}/favicon.ico" mce_href="${contextPath}/favicon.ico" type="image/x-icon">
@@ -80,22 +80,20 @@ function checkfield(theform) {
 <p style="margin-bottom: 5px; margin-right: 2px;text-align: right;">
 <script type="text/javascript">
 function doSearch() {
-	if(trim($('frmsearch').q.value)=='')
+	if(trim($('search_all').value)=='')
 	{
-		alert('输入关键词');
+		alert('${I18n.getMessage("ForumBase.Search.key")}');
 		return false;
 	}
 	frmsearch.submit();
 }
 </script>
-<form style="text-align: right; margin-right: 10px;" id="frmsearch" name="frmsearch" action="http://www.google.cn/search" onsubmit="doSearch(); return false;" method="get" target="google_window">
-<input value="GB2312" name="ie" type="hidden"> 
-<input value="GB2312" name="oe" type="hidden"> 
-<input value="zh-CN" name="hl" type="hidden"> 
-<input value="localhost/ejforum" name="sitesearch" type="hidden"> 
+<form style="text-align: right; margin-right: 10px;" id="frmsearch" name="frmsearch" action="${JForumContext.encodeURL("/jforum")}" onsubmit="doSearch(); return false;" method="post">
+<input type="hidden" name="module" value="search" />
+<input type="hidden" name="action" value="search" />
 <div style="float: left; width: 100px;">&nbsp;</div>
-<input maxlength="255" size="12" name="q" class="search" onblur="if (this.value == '') this.value = '${I18n.getMessage("ForumIndex.searchSiteForum")}...';" onclick="if (this.value == '${I18n.getMessage("ForumIndex.searchSiteForum")}...') this.value = '';" value="${I18n.getMessage("ForumIndex.searchSiteForum")}..." size="20" name="search_keywords" class="inputSearchForum"/>&nbsp; 
-<a href="#" onclick="doSearch(); return false;" style="vertical-align: middle;">
+<input maxlength="255" size="12" id="search_all" class="search" onblur="if (this.value == '') this.value = '${I18n.getMessage("ForumIndex.searchSiteForum")}...';" onclick="if (this.value == '${I18n.getMessage("ForumIndex.searchSiteForum")}...') this.value = '';" value="${I18n.getMessage("ForumIndex.searchSiteForum")}..." size="20" name="search_keywords" class="inputSearchForum"/>&nbsp; 
+<a href="javascript:doSearch();" style="vertical-align: middle;">
 <img src="${contextPath}/templates/${templateName}/images/search.gif" alt="searchInsite" align="absbottom" border="0"></a>
 </form>
 </p>

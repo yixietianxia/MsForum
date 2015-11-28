@@ -21,6 +21,7 @@ public class FrameAction extends Command {
 		frame();
 	}
 	public void frame() {
+		this.context.put("leftShow", SystemGlobals.getValue(ConfigKeys.HOME_LEFT_MENU_SHOW));
 		this.setTemplateName(TemplateKeys.FRAME_FRAME);
 	}
 	public void leftMenu() {

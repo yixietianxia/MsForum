@@ -59,7 +59,7 @@ BUTTON.submit {
 	BORDER-RIGHT: #fdb939 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #fffdee 1px solid; PADDING-LEFT: 10px; BACKGROUND: #fff8c5; PADDING-BOTTOM: 0px; BORDER-LEFT: #fffdee 1px solid; COLOR: #090; MARGIN-RIGHT: 1em; PADDING-TOP: 0px; BORDER-BOTTOM: #fdb939 1px solid
 }
 input.submit {
-	BORDER-RIGHT: #fdb939 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #fffdee 1px solid; PADDING-LEFT: 10px; BACKGROUND: #fff8c5; PADDING-BOTTOM: 0px; BORDER-LEFT: #fffdee 1px solid; COLOR: #090; MARGIN-RIGHT: 1em; PADDING-TOP: 0px; BORDER-BOTTOM: #fdb939 1px solid
+	BORDER-RIGHT: #fdb939 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #fffdee 1px solid; PADDING-LEFT: 10px; BACKGROUND: #fff8c5; PADDING-BOTTOM: 0px; BORDER-LEFT: #fffdee 1px solid; COLOR: #090; MARGIN-RIGHT: 1em; PADDING-TOP: 0px; BORDER-BOTTOM: #fdb939 1px solid ;FONT-WEIGHT: bold;COLOR: #069;
 }
 A {
 	COLOR: #000; TEXT-DECORATION: none

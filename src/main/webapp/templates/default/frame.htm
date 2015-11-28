@@ -48,10 +48,13 @@
 	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
 		<tbody>
 			<tr>
+				<#if leftShow=="true">
 				<td style="" id="navigation" name="frametitle" align="middle" valign="center" width="180">
 					<iframe name="leftmenu" src="${contextPath}/fourms/jforum.html?module=frame&action=leftMenu" style="height: 100%; visibility: inherit; width: 180px; z-index: 1;" onkeydown="refreshrightframe(event)" scrolling="auto" frameborder="0"></iframe>
 				</td>
+				</#if>
 				<td style="width: 100%;">
+					<#if leftShow=="true">
 					<table id="switchbar" style="position: absolute; left: 177px; background-repeat: repeat-y; background-position: -177px 50%;" border="0" cellpadding="0" cellspacing="0" height="100%" width="11">
 						<tbody>
 							<tr>
@@ -61,6 +64,7 @@
 							</tr>
 						</tbody>
 					</table>
+					</#if>
 					<iframe name="main" src="${contextPath}/forums/list.html" style="height: 100%;visibility: inherit; width: 100%; z-index: 1; overflow: visible;" onkeydown="refreshrightframe(event)" scrolling="yes" frameborder="0"></iframe>
 				</td>
 			</tr>
