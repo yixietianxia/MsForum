@@ -123,7 +123,10 @@ public class AdminAction extends Command {
 			ForumDAO dao = DataAccessDriver.getInstance().newForumDAO();
 			this.context.put("stats", dao.getBoardStatus());
 			
-			this.checkBoardVersion();
+			/**
+			 * ADD MR.X不需要验证
+			 */
+			//this.checkBoardVersion();
 		}
 	}
 	

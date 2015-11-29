@@ -246,7 +246,7 @@ function validateForm()
 		<tr>
 			<td class="row1"><b>${I18n.getMessage("User.langPreference")}:</b></td>
 			<td >
-				<select name="language">
+				<select name="language" disabled="disabled">
 					<option value="" <#if u.lang?default("") == "">selected="selected"</#if>>${I18n.getMessage("User.Lang.default")}</option>
 					<option value="en_US" <#if u.lang?default("") == "en_US">selected="selected"</#if>>${I18n.getMessage("User.Lang.en_US")}</option>
 					<option value="zh_TW" <#if u.lang?default("") == "zh_TW">selected="selected"</#if>>${I18n.getMessage("User.Lang.zh_TW")}</option>

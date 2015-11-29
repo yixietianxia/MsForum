@@ -757,6 +757,10 @@ ModerationLog.selectAll = SELECT l.*, u.username, u2.username AS poster_username
 	ORDER BY log_id DESC \
 	LIMIT ?, ?
 
+	
+	
+	
+# 查询有差异的语句
 # ##########
 # UserModel
 # ##########
@@ -815,3 +819,8 @@ ModerationLog.lastGeneratedModerationLogId = SELECT MAX(log_id) FROM jforum_mode
 # ############
 # SearchModel
 # ############
+
+# ############
+# BanModel
+# ############
+BanlistModel.lastGeneratedBanlistId = SELECT max(banlist_id) FROM jforum_banlist

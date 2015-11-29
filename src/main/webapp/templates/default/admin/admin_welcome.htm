@@ -14,34 +14,10 @@ p, td { font-size: 11px; }
 <!--
 <a href="${contextPath}/jforum${extension}?module=admBase&action=fetchMail">Fetch mail</a><br>
 -->
-<h1>${I18n.getMessage("ForumListing.versionInformation")}</h1>
+<h1><span style="font-size: 14px;color: white;">${I18n.getMessage("ForumListing.versionInformation")}</span></h1>
+<p style="color:red">${I18n.getMessage("Admin.welcome.unknowVersion")}</p>
 
-<#if !upToDate?exists>
-	<p style="color:red">${I18n.getMessage("Admin.welcome.unknowVersion")}</p>
-<#elseif !upToDate>
-	<p style="color:red">
-		${I18n.getMessage("Admin.welcome.outdatedVersion")}
-		${I18n.getMessage("Admin.welcome.latestVersion")} <b>${latestVersion}</b>.
-		${I18n.getMessage("Admin.welcome.currentVersion")} <b>${currentVersion}</b>.
-	</p>
-
-	<p><b>${I18n.getMessage("Admin.welcome.releaseNotes")} ${latestVersion}:</b></p>
-
-	<p><i><span class="gen">${notes}</span></i></p>
-<#else>
-	<p style="color: green">${I18n.getMessage("Admin.welcome.upToDateVersion")}</p>
-</#if>
-
-<#if developmentVersion> <p style="color: red"><b>${I18n.getMessage("Admin.welcome.warning")}</b></p> </#if>
-
-<#if installModuleExists&false>
-	<h1>${I18n.getMessage("Admin.welcome.securityWarning")}</h1>
-	<p style="color:red">${I18n.getMessage("Admin.welcome.enabledInstallation")}</p>
-
-	<p>${I18n.getMessage("Admin.welcome.removeInstallation")}<br /></p>
-</#if>
-
-<h1>${I18n.getMessage("ForumListing.stats")}</h1>
+<h1><span style="font-size: 14px;color: white;">${I18n.getMessage("ForumListing.stats")}</span></h1>
 
 <table width="80%" cellpadding="4" cellspacing="1" border="0" class="mainbox">
   <tr>
@@ -73,7 +49,7 @@ p, td { font-size: 11px; }
   </tr>
 
 </table>
-<h1>${I18n.getMessage("ForumListing.whoIsOnline")}</h1>
+<h1><span style="font-size: 14px;color: white;">${I18n.getMessage("ForumListing.whoIsOnline")}</span></h1>
 <div <#if (sessions.size() > 10)>style="overflow: auto; width: 100%; height: 280px;"</#if>>
 <table width="80%" cellpadding="4" cellspacing="1" border="0" class="mainbox">
 	<tr>

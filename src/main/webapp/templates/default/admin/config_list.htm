@@ -103,7 +103,7 @@ function testEmail()
 	<td class="row1" width="10%"><span class="gen">${I18n.getMessage("Config.Form.I18n")}</span></td>
 	<td class="row1" width="38%">
 		<span class="gen">
-		<select name="p_i18n.board.default">
+		<select name="p_i18n.board.default" disabled="disabled">
 		<#list locales as l>
 			<#assign selected = ""/>
 			<#if l == config.getProperty("i18n.board.default")>
@@ -362,6 +362,18 @@ function testEmail()
 	</td>
 </tr>
 
+<tr>
+	<td class="row1" width="10%"><span class="gen">${I18n.getMessage("home.left.menu.isShow")}</span></td>
+	<td class="row1" width="38%">
+		<#assign o = config.getProperty("home.left.menu.show")/>
+		<span class="gen">
+			<select name="p_home.left.menu.show">
+				<option value="true" <#if o == "true">selected</#if>>${I18n.getMessage("True")}</option>
+				<option value="false" <#if o == "false">selected</#if>>${I18n.getMessage("False")}</option>
+			</select>
+		</span>
+	</td>
+</tr>
 
 <tr>
 	<td class="catsides" colspan="2" align="center"><input type="submit" value="${I18n.getMessage("Update")}" class="submit" />

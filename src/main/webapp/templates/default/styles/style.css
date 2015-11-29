@@ -388,7 +388,7 @@ SPAN.passed {
 	BORDER-TOP: #ddd 1px solid; padding-bottom:1px
 }
 .mainbox TBODY TH {
-	PADDING: 5px; BORDER-TOP: #ddd 1px solid
+	PADDING: 5px; BORDER-TOP: #ddd 1px solid; font-size:14px;
 }
 .mainbox TBODY TD {
 	PADDING: 5px; BORDER-TOP: #ddd 1px solid
