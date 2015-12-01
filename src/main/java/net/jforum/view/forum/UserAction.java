@@ -298,9 +298,11 @@ public class UserAction extends Command
 			error = true;
 		}
 		
-		if (!error && !userSession.validateCaptchaResponse(captchaResponse)){
-			this.context.put("error", I18n.getMessage("CaptchaResponseFails"));
-			error = true;
+		if(SystemGlobals.getBoolValue(ConfigKeys.CAPTCHA_REGISTRATION)){
+			if (!error && !userSession.validateCaptchaResponse(captchaResponse)){
+				this.context.put("error", I18n.getMessage("CaptchaResponseFails"));
+				error = true;
+			}
 		}
 
 		if (error) {
